@@ -2,11 +2,18 @@ package com.bestTrip.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,21 +28,38 @@ public class TravelGuide implements Serializable{
 	private float globalRating;
 	private String countryName;
 	private float totalCost;
-	public enum statusTravelGuide {waiting, approved, refused};
+	public enum statusTravelGuide{waiting, approved, refused;}
+	public statusTravelGuide statusTravelGuide ;
 	public Account approvedBy;
 	@Temporal (TemporalType.DATE)
 	private Date updateTravelGuide;
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name="idAccount")
+	private Account account;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="TYPEPLACE",
+	joinColumns=@JoinColumn(name="idTravelguide",
+	referencedColumnName="idTravelGuide"),
+	inverseJoinColumns =@JoinColumn(name = "idPlace", referencedColumnName="idPlace" ))
+	private Set<Place> places = new HashSet <> ();
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="TYPETRANSPORT",
+	joinColumns=@JoinColumn(name="idTravelguide",
+	referencedColumnName="idTravelGuide"),
+	inverseJoinColumns =@JoinColumn(name = "idTransport", referencedColumnName="idTransport" ))
+	private Set<Transport> transports = new HashSet <> ();
+	
 	public TravelGuide() {
+	
 		
 	}
 	public TravelGuide(String guideName, float globalRating, String coutryName, float totalCost, Account approvedBy,
 			Date updateTravelGuide) {
-		super();
 		this.guideName = guideName;
 		this.globalRating = globalRating;
 		this.countryName = coutryName;
 		this.totalCost = totalCost;
-		this.account = approvedBy;
+		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
 	}
 	public Long getIdTravelGuide() {
@@ -80,11 +104,21 @@ public class TravelGuide implements Serializable{
 	public void setUpdateTravelGuide(Date updateTravelGuide) {
 		this.updateTravelGuide = updateTravelGuide;
 	}
+	
+	public statusTravelGuide getStatusTravelGuide() {
+		return statusTravelGuide;
+	}
+	public void setStatusTravelGuide(statusTravelGuide statusTravelGuide) {
+		this.statusTravelGuide = statusTravelGuide;
+	}
 	@Override
 	public String toString() {
 		return "TravelGuide [idTravelGuide=" + idTravelGuide + ", guideName=" + guideName + ", globalRating="
-				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", updateTravelGuide="
-				+ updateTravelGuide + "]";
+				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", statusTravelGuide="
+				+ statusTravelGuide + ", approvedBy=" + approvedBy + ", updateTravelGuide=" + updateTravelGuide
+				+ ", places=" + places + ", transports=" + transports + "]";
 	}
+
+
 	
 }

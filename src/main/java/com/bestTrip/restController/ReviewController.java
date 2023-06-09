@@ -21,31 +21,31 @@ public class ReviewController {
 	@Autowired 
 	IReviewService reviewService;
 	
-	//@RequestMapping(value = "reviews", method = RequestMethod.GET)
+
 		@GetMapping("/reviews")
 		public List<Review> findAll() {
 			return reviewService.findAll();
 		}
 
-		//@RequestMapping(value = "reviews/{idReview}", method = RequestMethod.GET)
+		
 		@GetMapping("/reviews/{idReview}")
 		public Review findOne(@PathVariable("idReview") Long id) {
 			return reviewService.findOne(id);
 		}
 
-		//@RequestMapping(value = "reviews", method = RequestMethod.POST)
+		
 		@PostMapping("/reviews")
 		public Review saveReview(@RequestBody Review review) {
 			return reviewService.save(review);
 		}
 
-		//@RequestMapping(value = "reviews/{idReview}", method = RequestMethod.DELETE)
+	
 		@DeleteMapping("/reviews/{idReview}")
 		public void deleteReview(@PathVariable("idReview") Long id) {
 			reviewService.delete(id);
 		}
 
-		//@RequestMapping(value = "reviews/{idReview}", method = RequestMethod.PUT)
+	
 		@PutMapping("/reviews/{idReview}")
 		public Review updateReview(@PathVariable("idReview") Long id, @RequestBody Review review) {
 			Review currentReview = reviewService.findOne(id);
