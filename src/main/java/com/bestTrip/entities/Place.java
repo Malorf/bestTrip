@@ -10,7 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.bestTrip.model.Adress;
+import com.bestTrip.models.Adress;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
