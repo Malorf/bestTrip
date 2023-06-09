@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-
-
 @Entity
 @Table(name = "REVIEWS", schema = "best_trip_db")
 public class Review implements Serializable  {
@@ -28,18 +26,23 @@ public class Review implements Serializable  {
 	@ManyToOne (fetch=FetchType.LAZY)
 	@JoinColumn (name="idAccount")
 	private Account account;
-	public enum reviewObjectType {TravelGuide, Place, Transport};
+	public enum reviewObjectType {TravelGuide, Place, Transport;}
+	public reviewObjectType reviewObjectType;
 	
 	public Review() {
 		
 	}
-	public Review(String comment, float userRating, Long reviewObjectId, Account account) {
-		super();
+	
+	public Review(String comment, float userRating, Long reviewObjectId, Account account,
+			com.bestTrip.entities.Review.reviewObjectType reviewObjectType) {
 		this.comment = comment;
 		this.userRating = userRating;
 		this.reviewObjectId = reviewObjectId;
 		this.account = account;
+		this.reviewObjectType = reviewObjectType;
 	}
+
+	
 	public Long getIdReview() {
 		return idReview;
 	}
@@ -71,13 +74,19 @@ public class Review implements Serializable  {
 		this.account = account;
 	}
 	
+	public reviewObjectType getReviewObjectType() {
+		return reviewObjectType;
+	}
+	public void setReviewObjectType(reviewObjectType reviewObjectType) {
+		this.reviewObjectType = reviewObjectType;
+	}
 	@Override
 	public String toString() {
 		return "Review [idReview=" + idReview + ", comment=" + comment + ", userRating=" + userRating
-				+ ", reviewObjectId=" + reviewObjectId + "]";
+				+ ", reviewObjectId=" + reviewObjectId + ", account=" + account + ", reviewObjectType="
+				+ reviewObjectType + "]";
 	}
-	
-	}
+}
 
 	
 	

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,10 +28,14 @@ public class TravelGuide implements Serializable{
 	private float globalRating;
 	private String countryName;
 	private float totalCost;
-	public enum statusTravelGuide {waiting, approved, refused};
+	public enum statusTravelGuide{waiting, approved, refused;}
+	public statusTravelGuide statusTravelGuide ;
 	public Account approvedBy;
 	@Temporal (TemporalType.DATE)
 	private Date updateTravelGuide;
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name="idAccount")
+	private Account account;
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="TYPEPLACE",
 	joinColumns=@JoinColumn(name="idTravelguide",
@@ -42,7 +47,7 @@ public class TravelGuide implements Serializable{
 	joinColumns=@JoinColumn(name="idTravelguide",
 	referencedColumnName="idTravelGuide"),
 	inverseJoinColumns =@JoinColumn(name = "idTransport", referencedColumnName="idTransport" ))
-	private Set<Place> places = new HashSet <> ();
+	private Set<Transport> transports = new HashSet <> ();
 	
 	public TravelGuide() {
 	
@@ -99,11 +104,21 @@ public class TravelGuide implements Serializable{
 	public void setUpdateTravelGuide(Date updateTravelGuide) {
 		this.updateTravelGuide = updateTravelGuide;
 	}
+	
+	public statusTravelGuide getStatusTravelGuide() {
+		return statusTravelGuide;
+	}
+	public void setStatusTravelGuide(statusTravelGuide statusTravelGuide) {
+		this.statusTravelGuide = statusTravelGuide;
+	}
 	@Override
 	public String toString() {
 		return "TravelGuide [idTravelGuide=" + idTravelGuide + ", guideName=" + guideName + ", globalRating="
-				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", updateTravelGuide="
-				+ updateTravelGuide + "]";
+				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", statusTravelGuide="
+				+ statusTravelGuide + ", approvedBy=" + approvedBy + ", updateTravelGuide=" + updateTravelGuide
+				+ ", places=" + places + ", transports=" + transports + "]";
 	}
+
+
 	
 }

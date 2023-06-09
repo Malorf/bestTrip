@@ -22,31 +22,31 @@ public class TravelGuideController {
 	ITravelGuideService travelGuideService;
 	
 
-	//@RequestMapping(value = "travelGuides", method = RequestMethod.GET)
+	
 		@GetMapping("/travelGuides")
 		public List<TravelGuide> findAll() {
 			return travelGuideService.findAll();
 		}
 
-		//@RequestMapping(value = "travelGuides/{idTravelGuide}", method = RequestMethod.GET)
+		
 		@GetMapping("/travelGuides/{idTravelGuide}")
 		public TravelGuide findOne(@PathVariable("idTravelGuide") Long id) {
 			return travelGuideService.findOne(id);
 		}
 
-		//@RequestMapping(value = "travelGuides", method = RequestMethod.POST)
+		
 		@PostMapping("/travelGuides")
 		public TravelGuide saveTravelGuide(@RequestBody TravelGuide travelGuide) {
 			return travelGuideService.save(travelGuide);
 		}
 
-		//@RequestMapping(value = "travelGuides/{idTravelGuide}", method = RequestMethod.DELETE)
+		
 		@DeleteMapping("/travelGuides/{idTravelGuide}")
 		public void deleteTravelGuide(@PathVariable("idTravelGuide") Long id) {
 			travelGuideService.delete(id);
 		}
 
-		//@RequestMapping(value = "travelGuides/{idTravelGuide}", method = RequestMethod.PUT)
+		
 		@PutMapping("/travelGuides/{idTravelGuide}")
 		public TravelGuide updateTravelGuide(@PathVariable("idTravelGuide") Long id, @RequestBody TravelGuide travelGuide) {
 			TravelGuide currentTravelGuide = travelGuideService.findOne(id);
@@ -54,7 +54,7 @@ public class TravelGuideController {
 			currentTravelGuide.setGlobalRating(travelGuide.getGlobalRating());
 			currentTravelGuide.setCoutryName(travelGuide.getCoutryName());
 			currentTravelGuide.setTotalCost(travelGuide.getTotalCost());
-			//currentTravelGuide.setstatusTravelGuide(travelGuide.getTravelGuide());
+			currentTravelGuide.setStatusTravelGuide(travelGuide.getStatusTravelGuide());
 			currentTravelGuide.setApprovedBy(travelGuide.getApprovedBy());
 			currentTravelGuide.setUpdateTravelGuide(travelGuide.getUpdateTravelGuide());
 			return travelGuideService.save(currentTravelGuide);
