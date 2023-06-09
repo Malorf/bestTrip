@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.bestTrip.entities.AirTransport;
-import com.bestTrip.entities.Transport;
+import com.bestTrip.entities.MaritimeTransport;
 
 @Repository
-public interface TransportRepository extends JpaRepository<Transport, Long>{
-
-	Transport findByNameCompany (String nameCompany);
+public interface MaritimeTransportRepository extends JpaRepository<MaritimeTransport, Long>{
+	MaritimeTransport findByNameCompany (String nameCompany);
 }
+
+

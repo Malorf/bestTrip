@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("AirTransport")
+@DiscriminatorValue(value ="AirTransport")
 @Table(name = "AIR_TRANPORT", schema = "best_Trip_db")
 public class AirTransport extends Transport implements Serializable{
 
