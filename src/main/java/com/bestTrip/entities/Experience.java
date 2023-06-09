@@ -39,7 +39,7 @@ public class Experience implements Serializable{
 
 	@ManyToOne (fetch=FetchType.LAZY)
 	@JoinColumn(name="id_account")
-	private Account experience;
+	private Account accountExperience;
 	
 	
 	public Experience() {
@@ -117,12 +117,12 @@ public class Experience implements Serializable{
 
 	
 	public Account getAccount() {
-		return experience;
+		return accountExperience;
 	}
 
 
 	public void setAccount(Account account) {
-		this.experience = account;
+		this.accountExperience = account;
 	}
 
 
@@ -130,7 +130,7 @@ public class Experience implements Serializable{
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
 				+ Arrays.toString(imageExp) + ", videoExp=" + videoExp + ", description=" + description + ", statusExp="
-				+ statusExp + ", updateExp=" + updateExp + ", account=" + experience + "]";
+				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
 
 

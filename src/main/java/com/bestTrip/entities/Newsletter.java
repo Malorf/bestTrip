@@ -29,7 +29,7 @@ public class Newsletter implements Serializable{
 	private byte[] imageNewsletter;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_account")
-	private Account newsletter;
+	private Account AccountNewsletter;
 	
 	public Newsletter() {
 		
@@ -75,18 +75,18 @@ public class Newsletter implements Serializable{
 	}
 	
 	public Account getAccount() {
-		return newsletter;
+		return AccountNewsletter;
 	}
 
 	public void setAccount(Account account) {
-		this.newsletter = account;
+		this.AccountNewsletter= account;
 	}
 
 	@Override
 	public String toString() {
 		return "Newsletter [idNewsletter=" + idNewsletter + ", publicationDate=" + publicationDate
 				+ ", favoriteTripOfTheMonth=" + favoriteTripOfTheMonth + ", imageNewsletter="
-				+ Arrays.toString(imageNewsletter) + ", account=" + newsletter + "]";
+				+ Arrays.toString(imageNewsletter) + ", account=" + AccountNewsletter + "]";
 	}
 
 	
