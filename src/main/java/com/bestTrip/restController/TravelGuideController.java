@@ -52,7 +52,7 @@ public class TravelGuideController {
 			TravelGuide currentTravelGuide = travelGuideService.findOne(id);
 			currentTravelGuide.setGuideName(travelGuide.getGuideName());
 			currentTravelGuide.setGlobalRating(travelGuide.getGlobalRating());
-			currentTravelGuide.setCoutryName(travelGuide.getCoutryName());
+			currentTravelGuide.setCountryName(travelGuide.getCountryName());
 			currentTravelGuide.setTotalCost(travelGuide.getTotalCost());
 			currentTravelGuide.setStatusTravelGuide(travelGuide.getStatusTravelGuide());
 			currentTravelGuide.setApprovedBy(travelGuide.getApprovedBy());

@@ -35,7 +35,7 @@ public class TravelGuide implements Serializable{
 	private Date updateTravelGuide;
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="idAccount")
-	private Account account;
+	private Account accountTravelGuide;
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="TYPEPLACE",
 	joinColumns=@JoinColumn(name="idTravelguide",
@@ -53,72 +53,131 @@ public class TravelGuide implements Serializable{
 	
 		
 	}
-	public TravelGuide(String guideName, float globalRating, String coutryName, float totalCost, Account approvedBy,
-			Date updateTravelGuide) {
+
+	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
+			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
+			Date updateTravelGuide, Account accountTravelGuide) {
 		this.guideName = guideName;
 		this.globalRating = globalRating;
-		this.countryName = coutryName;
+		this.countryName = countryName;
 		this.totalCost = totalCost;
+		this.statusTravelGuide = statusTravelGuide;
 		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
+		this.accountTravelGuide = accountTravelGuide;
 	}
+
+	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
+			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
+			Date updateTravelGuide, Account accountTravelGuide, Set<Place> places, Set<Transport> transports) {
+		this.guideName = guideName;
+		this.globalRating = globalRating;
+		this.countryName = countryName;
+		this.totalCost = totalCost;
+		this.statusTravelGuide = statusTravelGuide;
+		this.approvedBy = approvedBy;
+		this.updateTravelGuide = updateTravelGuide;
+		this.accountTravelGuide = accountTravelGuide;
+		this.places = places;
+		this.transports = transports;
+	}
+
 	public Long getIdTravelGuide() {
 		return idTravelGuide;
 	}
+
 	public void setIdTravelGuide(Long idTravelGuide) {
 		this.idTravelGuide = idTravelGuide;
 	}
+
 	public String getGuideName() {
 		return guideName;
 	}
+
 	public void setGuideName(String guideName) {
 		this.guideName = guideName;
 	}
+
 	public float getGlobalRating() {
 		return globalRating;
 	}
+
 	public void setGlobalRating(float globalRating) {
 		this.globalRating = globalRating;
 	}
-	public String getCoutryName() {
+
+	public String getCountryName() {
 		return countryName;
 	}
-	public void setCoutryName(String coutryName) {
-		this.countryName = coutryName;
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
+
 	public float getTotalCost() {
 		return totalCost;
 	}
+
 	public void setTotalCost(float totalCost) {
 		this.totalCost = totalCost;
 	}
-	public Account getApprovedBy() {
-		return approvedBy;
-	}
-	public void setApprovedBy(Account approvedBy) {
-		this.approvedBy = approvedBy;
-	}
-	public Date getUpdateTravelGuide() {
-		return updateTravelGuide;
-	}
-	public void setUpdateTravelGuide(Date updateTravelGuide) {
-		this.updateTravelGuide = updateTravelGuide;
-	}
-	
+
 	public statusTravelGuide getStatusTravelGuide() {
 		return statusTravelGuide;
 	}
+
 	public void setStatusTravelGuide(statusTravelGuide statusTravelGuide) {
 		this.statusTravelGuide = statusTravelGuide;
 	}
+
+	public Account getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(Account approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	public Date getUpdateTravelGuide() {
+		return updateTravelGuide;
+	}
+
+	public void setUpdateTravelGuide(Date updateTravelGuide) {
+		this.updateTravelGuide = updateTravelGuide;
+	}
+
+	public Account getAccountTravelGuide() {
+		return accountTravelGuide;
+	}
+
+	public void setAccountTravelGuide(Account accountTravelGuide) {
+		this.accountTravelGuide = accountTravelGuide;
+	}
+
+	public Set<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(Set<Place> places) {
+		this.places = places;
+	}
+
+	public Set<Transport> getTransports() {
+		return transports;
+	}
+
+	public void setTransports(Set<Transport> transports) {
+		this.transports = transports;
+	}
+
 	@Override
 	public String toString() {
 		return "TravelGuide [idTravelGuide=" + idTravelGuide + ", guideName=" + guideName + ", globalRating="
 				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", statusTravelGuide="
 				+ statusTravelGuide + ", approvedBy=" + approvedBy + ", updateTravelGuide=" + updateTravelGuide
-				+ ", places=" + places + ", transports=" + transports + "]";
+				+ ", accountTravelGuide=" + accountTravelGuide + ", places=" + places + ", transports=" + transports
+				+ "]";
 	}
-
-
+	
 	
 }
