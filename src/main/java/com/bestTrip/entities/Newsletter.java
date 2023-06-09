@@ -6,9 +6,12 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +27,9 @@ public class Newsletter implements Serializable{
 	private Date publicationDate;
 	private URL favoriteTripOfTheMonth;
 	private byte[] imageNewsletter;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_account")
+	private Account newsletter;
 	
 	public Newsletter() {
 		
@@ -67,13 +73,23 @@ public class Newsletter implements Serializable{
 	public void setImageNewsletter(byte[] imageNewsletter) {
 		this.imageNewsletter = imageNewsletter;
 	}
+	
+	public Account getAccount() {
+		return newsletter;
+	}
+
+	public void setAccount(Account account) {
+		this.newsletter = account;
+	}
 
 	@Override
 	public String toString() {
 		return "Newsletter [idNewsletter=" + idNewsletter + ", publicationDate=" + publicationDate
 				+ ", favoriteTripOfTheMonth=" + favoriteTripOfTheMonth + ", imageNewsletter="
-				+ Arrays.toString(imageNewsletter) + "]";
+				+ Arrays.toString(imageNewsletter) + ", account=" + newsletter + "]";
 	}
+
+	
 	
 	
 }
