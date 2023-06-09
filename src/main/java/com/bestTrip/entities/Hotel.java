@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import com.bestTrip.models.Adress;
 
 @Entity
-@DiscriminatorValue("Hotel")
+@DiscriminatorValue(value ="Hotel")
 @Table(name = "HOTELS", schema = "best_Trip_db")
 public class Hotel extends Place implements Serializable{
 
