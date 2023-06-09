@@ -25,7 +25,7 @@ public class Review implements Serializable  {
 	private Long reviewObjectId; 
 	@ManyToOne (fetch=FetchType.LAZY)
 	@JoinColumn (name="idAccount")
-	private Account account;
+	private Account accountReview;
 	public enum reviewObjectType {TravelGuide, Place, Transport;}
 	public reviewObjectType reviewObjectType;
 	
@@ -33,12 +33,12 @@ public class Review implements Serializable  {
 		
 	}
 	
-	public Review(String comment, float userRating, Long reviewObjectId, Account account,
+	public Review(String comment, float userRating, Long reviewObjectId, Account accountReview,
 			com.bestTrip.entities.Review.reviewObjectType reviewObjectType) {
 		this.comment = comment;
 		this.userRating = userRating;
 		this.reviewObjectId = reviewObjectId;
-		this.account = account;
+		this.accountReview = accountReview;
 		this.reviewObjectType = reviewObjectType;
 	}
 
@@ -68,10 +68,10 @@ public class Review implements Serializable  {
 		this.reviewObjectId = reviewObjectId;
 	}
 	public Account getAccount() {
-		return account;
+		return accountReview;
 	}
 	public void setAccount(Account account) {
-		this.account = account;
+		this.accountReview = account;
 	}
 	
 	public reviewObjectType getReviewObjectType() {
@@ -83,7 +83,7 @@ public class Review implements Serializable  {
 	@Override
 	public String toString() {
 		return "Review [idReview=" + idReview + ", comment=" + comment + ", userRating=" + userRating
-				+ ", reviewObjectId=" + reviewObjectId + ", account=" + account + ", reviewObjectType="
+				+ ", reviewObjectId=" + reviewObjectId + ", accountReview=" + accountReview + ", reviewObjectType="
 				+ reviewObjectType + "]";
 	}
 }
