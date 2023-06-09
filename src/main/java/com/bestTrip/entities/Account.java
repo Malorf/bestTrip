@@ -1,9 +1,12 @@
 package com.bestTrip.entities;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
 
@@ -39,6 +43,16 @@ public class Account {
 	private int numberOfGuideContributions=0;
 	private int numberOfExepriencesShared=0;
 	private boolean sub; //subscribe to the newsletter
+	
+	//Associations
+	@OneToMany(mappedBy="accountReview", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Review> reviews = new ArrayList<>();
+	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<TravelGuide> travelGuides = new ArrayList<>();
+	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Experience> experiences = new ArrayList<>();
+	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Newsletter> newsletters = new ArrayList<>();
 	
 	public Account() {
 		
@@ -136,6 +150,39 @@ public class Account {
 
 	public void setSub(boolean sub) {
 		this.sub = sub;
+	}
+
+	
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<TravelGuide> getTravelGuides() {
+		return travelGuides;
+	}
+
+	public void setTravelGuides(List<TravelGuide> travelGuides) {
+		this.travelGuides = travelGuides;
+	}
+
+	public List<Experience> getExperiences() {
+		return experiences;
+	}
+
+	public void setExperiences(List<Experience> experiences) {
+		this.experiences = experiences;
+	}
+
+	public List<Newsletter> getNewsletters() {
+		return newsletters;
+	}
+
+	public void setNewsletters(List<Newsletter> newsletters) {
+		this.newsletters = newsletters;
 	}
 
 	@Override
