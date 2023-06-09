@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@DiscriminatorValue("MaritimeTransport")
+@DiscriminatorValue(value="MaritimeTransport")
 @Table(name = "MARITIME_TRANSPORT", schema = "best_Trip_db")
 public class MaritimeTransport extends Transport implements Serializable {
 
