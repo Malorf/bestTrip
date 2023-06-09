@@ -30,7 +30,7 @@ public class Experience implements Serializable{
 	private enum statusExp {waiting,approved, refus};
 	
 	@Temporal (TemporalType.DATE)
-	private Date update;
+	private Date updateExp;
 
 	public Experience() {
 		
@@ -42,7 +42,7 @@ public class Experience implements Serializable{
 		this.imageExp = imageExp;
 		this.videoExp = videoExp;
 		this.description = description;
-		this.update = update;
+		this.updateExp = update;
 	}
 	
 
@@ -87,18 +87,18 @@ public class Experience implements Serializable{
 	}
 
 	public Date getUpdate() {
-		return update;
+		return updateExp;
 	}
 
 	public void setUpdate(Date update) {
-		this.update = update;
+		this.updateExp = update;
 	}
 
 	@Override
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
 				+ Arrays.toString(imageExp) + ", videoExp=" + videoExp + ", description=" + description + ", update="
-				+ update + "]";
+				+ updateExp + "]";
 	}
 	
 }
