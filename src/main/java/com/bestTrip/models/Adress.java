@@ -1,39 +1,27 @@
 package com.bestTrip.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "ADRESS", schema = "best_Trip_db")
-public class Adress {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idAdress;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Adress implements Serializable{
+
 	private String street;
 	private String city;
 	private Long postalCode;
  
  public Adress() {
-	// TODO Auto-generated constructor stub
+
 }
 
 public Adress(String street, String city, Long postalCode) {
-	super();
+
 	this.street = street;
 	this.city = city;
 	this.postalCode = postalCode;
 }
 
-public Long getIdAdress() {
-	return idAdress;
-}
-
-public void setIdAdress(Long idAdress) {
-	this.idAdress = idAdress;
-}
 
 public String getStreet() {
 	return street;
@@ -61,7 +49,7 @@ public void setPostalCode(Long postalCode) {
 
 @Override
 public String toString() {
-	return "Adress [idAdress=" + idAdress + ", street=" + street + ", city=" + city + ", postalCode=" + postalCode
+	return "Adress [ street=" + street + ", city=" + city + ", postalCode=" + postalCode
 			+ "]";
 }
  

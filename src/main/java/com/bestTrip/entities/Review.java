@@ -26,15 +26,16 @@ public class Review implements Serializable  {
 	@ManyToOne (fetch=FetchType.LAZY)
 	@JoinColumn (name="idAccount")
 	private Account accountReview;
-	public enum reviewObjectType {TravelGuide, Place, Transport;}
-	public reviewObjectType reviewObjectType;
+	
+	public enum ReviewObjectType {TravelGuide, Place, Transport;}
+	public ReviewObjectType reviewObjectType;
 	
 	public Review() {
 		
 	}
 	
 	public Review(String comment, float userRating, Long reviewObjectId, Account accountReview,
-			com.bestTrip.entities.Review.reviewObjectType reviewObjectType) {
+			ReviewObjectType reviewObjectType) {
 		this.comment = comment;
 		this.userRating = userRating;
 		this.reviewObjectId = reviewObjectId;
@@ -74,10 +75,10 @@ public class Review implements Serializable  {
 		this.accountReview = account;
 	}
 	
-	public reviewObjectType getReviewObjectType() {
+	public ReviewObjectType getReviewObjectType() {
 		return reviewObjectType;
 	}
-	public void setReviewObjectType(reviewObjectType reviewObjectType) {
+	public void setReviewObjectType(ReviewObjectType reviewObjectType) {
 		this.reviewObjectType = reviewObjectType;
 	}
 	@Override

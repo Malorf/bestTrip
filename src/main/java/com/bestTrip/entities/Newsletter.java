@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "NEWSLETTER", schema = "best_trip_db")
+@Table(name = "NEWSLETTERS", schema = "best_trip_db")
 public class Newsletter implements Serializable{
 	
 	@Id
