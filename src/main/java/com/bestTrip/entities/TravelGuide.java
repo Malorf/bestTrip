@@ -30,7 +30,6 @@ public class TravelGuide implements Serializable{
 	private float totalCost;
 	public enum statusTravelGuide{waiting, approved, refused;}
 	public statusTravelGuide statusTravelGuide ;
-	public Account approvedBy;
 	@Temporal (TemporalType.DATE)
 	private Date updateTravelGuide;
 	@ManyToOne(fetch= FetchType.LAZY)
@@ -55,27 +54,25 @@ public class TravelGuide implements Serializable{
 	}
 
 	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
-			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
+			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide,
 			Date updateTravelGuide, Account accountTravelGuide) {
 		this.guideName = guideName;
 		this.globalRating = globalRating;
 		this.countryName = countryName;
 		this.totalCost = totalCost;
 		this.statusTravelGuide = statusTravelGuide;
-		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
 		this.accountTravelGuide = accountTravelGuide;
 	}
 
 	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
-			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
+			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide,
 			Date updateTravelGuide, Account accountTravelGuide, Set<Place> places, Set<Transport> transports) {
 		this.guideName = guideName;
 		this.globalRating = globalRating;
 		this.countryName = countryName;
 		this.totalCost = totalCost;
 		this.statusTravelGuide = statusTravelGuide;
-		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
 		this.accountTravelGuide = accountTravelGuide;
 		this.places = places;
@@ -130,14 +127,6 @@ public class TravelGuide implements Serializable{
 		this.statusTravelGuide = statusTravelGuide;
 	}
 
-	public Account getApprovedBy() {
-		return approvedBy;
-	}
-
-	public void setApprovedBy(Account approvedBy) {
-		this.approvedBy = approvedBy;
-	}
-
 	public Date getUpdateTravelGuide() {
 		return updateTravelGuide;
 	}
@@ -174,7 +163,7 @@ public class TravelGuide implements Serializable{
 	public String toString() {
 		return "TravelGuide [idTravelGuide=" + idTravelGuide + ", guideName=" + guideName + ", globalRating="
 				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", statusTravelGuide="
-				+ statusTravelGuide + ", approvedBy=" + approvedBy + ", updateTravelGuide=" + updateTravelGuide
+				+ statusTravelGuide  + ", updateTravelGuide=" + updateTravelGuide
 				+ ", accountTravelGuide=" + accountTravelGuide + ", places=" + places + ", transports=" + transports
 				+ "]";
 	}
