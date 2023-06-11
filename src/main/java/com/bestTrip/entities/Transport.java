@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +27,11 @@ public class Transport implements Serializable{
 	private String nameCompany;
 	private Float transportRating;
 	private Float timeTravel;
+	
 	//private SyndFeed rss;
+	
+	@ManyToMany(mappedBy="transports")
+	private List<TravelGuide> transportsTravelGuides;
 	
 	
 	public Transport() {
@@ -37,6 +43,18 @@ public class Transport implements Serializable{
 		this.nameCompany = nameCompany;
 		this.transportRating = transportRating;
 		this.timeTravel = timeTravel;
+	}
+	
+	
+	
+	public Transport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
+			List<TravelGuide> transportsTravelGuides) {
+		super();
+		this.transportCost = transportCost;
+		this.nameCompany = nameCompany;
+		this.transportRating = transportRating;
+		this.timeTravel = timeTravel;
+		this.transportsTravelGuides = transportsTravelGuides;
 	}
 	public Long getIdTransport() {
 		return idTransport;
@@ -68,11 +86,22 @@ public class Transport implements Serializable{
 	public void setTimeTravel(Float timeTravel) {
 		this.timeTravel = timeTravel;
 	}
+	
+	
+	public List<TravelGuide> getTransportsTravelGuides() {
+		return transportsTravelGuides;
+	}
+	public void setTransportsTravelGuides(List<TravelGuide> transportsTravelGuides) {
+		this.transportsTravelGuides = transportsTravelGuides;
+	}
 	@Override
 	public String toString() {
 		return "Transport [idTransport=" + idTransport + ", transportCost=" + transportCost + ", nameCompany="
-				+ nameCompany + ", transportRating=" + transportRating + ", timeTravel=" + timeTravel + "]";
+				+ nameCompany + ", transportRating=" + transportRating + ", timeTravel=" + timeTravel
+				+ ", transportsTravelGuides=" + transportsTravelGuides + "]";
 	}
+
+	
 	
 	
 }

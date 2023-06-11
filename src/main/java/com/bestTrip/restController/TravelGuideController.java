@@ -55,7 +55,6 @@ public class TravelGuideController {
 			currentTravelGuide.setCountryName(travelGuide.getCountryName());
 			currentTravelGuide.setTotalCost(travelGuide.getTotalCost());
 			currentTravelGuide.setStatusTravelGuide(travelGuide.getStatusTravelGuide());
-			currentTravelGuide.setApprovedBy(travelGuide.getApprovedBy());
 			currentTravelGuide.setUpdateTravelGuide(travelGuide.getUpdateTravelGuide());
 			return travelGuideService.save(currentTravelGuide);
 		}

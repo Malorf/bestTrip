@@ -1,4 +1,4 @@
-package models;
+package com.bestTrip.models;
 
 import java.util.Collection;
 import java.util.Set;

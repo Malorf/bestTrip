@@ -13,9 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.bestTrip.entities.Account;
 import com.bestTrip.entities.Role;
+import com.bestTrip.models.AccountDetail;
 import com.bestTrip.services.interfaces.IAccountService;
-
-import models.AccountDetail;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService{

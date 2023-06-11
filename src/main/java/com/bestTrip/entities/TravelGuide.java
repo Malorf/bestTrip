@@ -2,8 +2,7 @@ package com.bestTrip.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,26 +27,25 @@ public class TravelGuide implements Serializable{
 	private float globalRating;
 	private String countryName;
 	private float totalCost;
-	public enum statusTravelGuide{waiting, approved, refused;}
-	public statusTravelGuide statusTravelGuide ;
-	public Account approvedBy;
 	@Temporal (TemporalType.DATE)
 	private Date updateTravelGuide;
+	
+	//Variable to check
+	public enum StatusTravelGuide{waiting, approved, refused;}
+	private StatusTravelGuide statusTravelGuide;
+	
+	//Relations
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="idAccount")
 	private Account accountTravelGuide;
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="TYPEPLACE",
-	joinColumns=@JoinColumn(name="idTravelguide",
-	referencedColumnName="idTravelGuide"),
-	inverseJoinColumns =@JoinColumn(name = "idPlace", referencedColumnName="idPlace" ))
-	private Set<Place> places = new HashSet <> ();
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="TYPETRANSPORT",
-	joinColumns=@JoinColumn(name="idTravelguide",
-	referencedColumnName="idTravelGuide"),
-	inverseJoinColumns =@JoinColumn(name = "idTransport", referencedColumnName="idTransport" ))
-	private Set<Transport> transports = new HashSet <> ();
+	
+	@ManyToMany
+	@JoinTable(name="travel_guides_places", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="place_id"))
+	private List<Place> places;
+	
+	@ManyToMany
+	@JoinTable(name="travel_guides_transports", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="transport_id"))
+	private List<Transport> transports;
 	
 	public TravelGuide() {
 	
@@ -55,28 +53,29 @@ public class TravelGuide implements Serializable{
 	}
 
 	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
-			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
+			StatusTravelGuide statusTravelGuide,
 			Date updateTravelGuide, Account accountTravelGuide) {
 		this.guideName = guideName;
 		this.globalRating = globalRating;
 		this.countryName = countryName;
 		this.totalCost = totalCost;
 		this.statusTravelGuide = statusTravelGuide;
-		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
 		this.accountTravelGuide = accountTravelGuide;
 	}
 
+	
+	
 	public TravelGuide(String guideName, float globalRating, String countryName, float totalCost,
-			com.bestTrip.entities.TravelGuide.statusTravelGuide statusTravelGuide, Account approvedBy,
-			Date updateTravelGuide, Account accountTravelGuide, Set<Place> places, Set<Transport> transports) {
+			Date updateTravelGuide, StatusTravelGuide statusTravelGuide, Account accountTravelGuide, List<Place> places,
+			List<Transport> transports) {
+		super();
 		this.guideName = guideName;
 		this.globalRating = globalRating;
 		this.countryName = countryName;
 		this.totalCost = totalCost;
-		this.statusTravelGuide = statusTravelGuide;
-		this.approvedBy = approvedBy;
 		this.updateTravelGuide = updateTravelGuide;
+		this.statusTravelGuide = statusTravelGuide;
 		this.accountTravelGuide = accountTravelGuide;
 		this.places = places;
 		this.transports = transports;
@@ -122,20 +121,12 @@ public class TravelGuide implements Serializable{
 		this.totalCost = totalCost;
 	}
 
-	public statusTravelGuide getStatusTravelGuide() {
+	public StatusTravelGuide getStatusTravelGuide() {
 		return statusTravelGuide;
 	}
 
-	public void setStatusTravelGuide(statusTravelGuide statusTravelGuide) {
+	public void setStatusTravelGuide(StatusTravelGuide statusTravelGuide) {
 		this.statusTravelGuide = statusTravelGuide;
-	}
-
-	public Account getApprovedBy() {
-		return approvedBy;
-	}
-
-	public void setApprovedBy(Account approvedBy) {
-		this.approvedBy = approvedBy;
 	}
 
 	public Date getUpdateTravelGuide() {
@@ -154,30 +145,12 @@ public class TravelGuide implements Serializable{
 		this.accountTravelGuide = accountTravelGuide;
 	}
 
-	public Set<Place> getPlaces() {
-		return places;
-	}
-
-	public void setPlaces(Set<Place> places) {
-		this.places = places;
-	}
-
-	public Set<Transport> getTransports() {
-		return transports;
-	}
-
-	public void setTransports(Set<Transport> transports) {
-		this.transports = transports;
-	}
-
 	@Override
 	public String toString() {
 		return "TravelGuide [idTravelGuide=" + idTravelGuide + ", guideName=" + guideName + ", globalRating="
-				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", statusTravelGuide="
-				+ statusTravelGuide + ", approvedBy=" + approvedBy + ", updateTravelGuide=" + updateTravelGuide
-				+ ", accountTravelGuide=" + accountTravelGuide + ", places=" + places + ", transports=" + transports
-				+ "]";
+				+ globalRating + ", countryName=" + countryName + ", totalCost=" + totalCost + ", updateTravelGuide="
+				+ updateTravelGuide + ", statusTravelGuide=" + statusTravelGuide + ", accountTravelGuide="
+				+ accountTravelGuide + ", places=" + places + ", transports=" + transports + "]";
 	}
-	
 	
 }

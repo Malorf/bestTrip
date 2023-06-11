@@ -1,16 +1,19 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.bestTrip.model.Adress;
+import com.bestTrip.models.Adress;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -21,9 +24,13 @@ public class Place implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPlace;
 	private String placeName;
+	@Embedded
 	private Adress adress;
 	private Float placeRating;
 	private Float placeCost;
+	
+	@ManyToMany(mappedBy="places")
+	private List<TravelGuide> placesTravelGuides;
 	
 	public Place() {
 		// TODO Auto-generated constructor stub
@@ -35,6 +42,17 @@ public class Place implements Serializable {
 		this.adress = adress;
 		this.placeRating = placeRating;
 		this.placeCost = placeCost;
+	}
+	
+	
+	
+	public Place(String placeName, Adress adress, Float placeRating, Float placeCost, List<TravelGuide> travelGuides) {
+		super();
+		this.placeName = placeName;
+		this.adress = adress;
+		this.placeRating = placeRating;
+		this.placeCost = placeCost;
+		this.placesTravelGuides = travelGuides;
 	}
 
 	public Long getIdPlace() {
@@ -77,11 +95,23 @@ public class Place implements Serializable {
 		this.placeCost = placeCost;
 	}
 
+	
+	
+	public List<TravelGuide> getTravelGuides() {
+		return placesTravelGuides;
+	}
+
+	public void setTravelGuides(List<TravelGuide> travelGuides) {
+		this.placesTravelGuides = travelGuides;
+	}
+
 	@Override
 	public String toString() {
 		return "Place [idPlace=" + idPlace + ", placeName=" + placeName + ", adress=" + adress + ", placeRating="
-				+ placeRating + ", placeCost=" + placeCost + "]";
+				+ placeRating + ", placeCost=" + placeCost + ", travelGuides=" + placesTravelGuides + "]";
 	}
+
+
 	
 	
 	

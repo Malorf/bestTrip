@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "EXPERIENCE", schema = "best_trip_db")
+@Table(name = "EXPERIENCES", schema = "best_trip_db")
 
 public class Experience implements Serializable{
 	
@@ -31,7 +31,7 @@ public class Experience implements Serializable{
 	private URL videoExp;
 	private String description;
 	
-	private enum statusExp {waiting,approved,refus;}
+	private enum statusExp {waiting,approved,refused;}
 	public statusExp statusExp;
 	
 	@Temporal (TemporalType.DATE)
@@ -48,7 +48,7 @@ public class Experience implements Serializable{
 
 
 	public Experience(URL urlTravelGuide, byte[] imageExp, URL videoExp, String description,
-			com.bestTrip.entities.Experience.statusExp statusExp, Date updateExp) {
+			statusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;

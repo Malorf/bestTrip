@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.bestTrip.model.Adress;
+import com.bestTrip.models.Adress;
 
 @Entity
 @DiscriminatorValue(value = "Restaurant")
