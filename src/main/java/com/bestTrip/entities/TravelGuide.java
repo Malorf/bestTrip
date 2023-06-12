@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TRAVELGUIDES", schema = "best_trip_db")
 public class TravelGuide implements Serializable{
@@ -37,6 +39,7 @@ public class TravelGuide implements Serializable{
 	//Relations
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="idAccount")
+	@JsonIgnore
 	private Account accountTravelGuide;
 	
 	@ManyToMany
@@ -45,8 +48,8 @@ public class TravelGuide implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name="travel_guides_transports", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="transport_id"))
-	private List<Transport> transports;
 	
+	private List<Transport> transports;
 	public TravelGuide() {
 	
 		
