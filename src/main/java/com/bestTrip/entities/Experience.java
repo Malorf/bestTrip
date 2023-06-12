@@ -26,9 +26,9 @@ public class Experience implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExperience;
-	private URL urlTravelGuide ;
+	private String urlTravelGuide ;
 	private byte[] imageExp;
-	private URL videoExp;
+	private String urlVideoExp;
 	private String description;
 	
 	private enum StatusExp {waiting,approved,refused;}
@@ -47,12 +47,12 @@ public class Experience implements Serializable{
 	}
 
 
-	public Experience(URL urlTravelGuide, byte[] imageExp, URL videoExp, String description,
+	public Experience(String urlTravelGuide, byte[] imageExp, String urlVideoExp, String description,
 			StatusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;
-		this.videoExp = videoExp;
+		this.urlVideoExp = urlVideoExp;
 		this.description = description;
 		this.statusExp = statusExp;
 		this.updateExp = updateExp;
@@ -66,11 +66,11 @@ public class Experience implements Serializable{
 		this.idExperience = idExperience;
 	}
 
-	public URL getUrlTravelGuide() {
+	public String getUrlTravelGuide() {
 		return urlTravelGuide;
 	}
 
-	public void setUrlTravelGuide(URL urlTravelGuide) {
+	public void setUrlTravelGuide(String urlTravelGuide) {
 		this.urlTravelGuide = urlTravelGuide;
 	}
 
@@ -82,12 +82,12 @@ public class Experience implements Serializable{
 		this.imageExp = imageExp;
 	}
 
-	public URL getVideoExp() {
-		return videoExp;
+	public String getUrlVideoExp() {
+		return urlVideoExp;
 	}
 
-	public void setVideoExp(URL videoExp) {
-		this.videoExp = videoExp;
+	public void setUrlVideoExp(String urlVideoExp) {
+		this.urlVideoExp = urlVideoExp;
 	}
 
 	public String getDescription() {
@@ -129,7 +129,7 @@ public class Experience implements Serializable{
 	@Override
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
-				+ Arrays.toString(imageExp) + ", videoExp=" + videoExp + ", description=" + description + ", statusExp="
+				+ Arrays.toString(imageExp) + ", videoExp=" + urlVideoExp + ", description=" + description + ", statusExp="
 				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
 
