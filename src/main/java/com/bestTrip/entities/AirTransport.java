@@ -8,38 +8,34 @@ import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue(value ="AirTransport")
-@Table(name = "AIR_TRANPORT", schema = "best_Trip_db")
+@Table(name = "AIR_TRANSPORT", schema = "best_Trip_db")
 public class AirTransport extends Transport implements Serializable{
 
-		private String airplaceClass;
+		private String airplaneClass;
 		
 		public AirTransport() {
 			// TODO Auto-generated constructor stub
 		}
 
 		public AirTransport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
-				String airplaceClass) {
+				String airplaneClass) {
 			super(transportCost, nameCompany, transportRating, timeTravel);
-			this.airplaceClass = airplaceClass;
+			this.airplaneClass = airplaneClass;
 		}
 
-		/**
-		 * @return the airplaceClass
-		 */
+
 		public String getAirplaceClass() {
-			return airplaceClass;
+			return airplaneClass;
 		}
 
-		/**
-		 * @param airplaceClass the airplaceClass to set
-		 */
-		public void setAirplaceClass(String airplaceClass) {
-			this.airplaceClass = airplaceClass;
+
+		public void setAirplaceClass(String airplaneClass) {
+			this.airplaneClass = airplaneClass;
 		}
 
 		@Override
 		public String toString() {
-			return "AirTransport [airplaceClass=" + airplaceClass + "]";
+			return "AirTransport [airplaneClass=" + airplaneClass + "]";
 		}
 
 

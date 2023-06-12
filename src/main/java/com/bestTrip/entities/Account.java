@@ -17,7 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -51,13 +50,14 @@ public class Account {
 	//Associations
 	@OneToMany(mappedBy="accountReview", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Review> reviews = new ArrayList<>();
+	
 	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<TravelGuide> travelGuides = new ArrayList<>();
 
 	@JsonIgnore
 	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-
 	private List<Experience> experiences = new ArrayList<>();
+	
 	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Newsletter> newsletters = new ArrayList<>();
 	
