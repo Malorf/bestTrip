@@ -31,8 +31,8 @@ public class Experience implements Serializable{
 	private URL videoExp;
 	private String description;
 	
-	private enum statusExp {waiting,approved,refused;}
-	public statusExp statusExp;
+	private enum StatusExp {waiting,approved,refused;}
+	public StatusExp statusExp;
 	
 	@Temporal (TemporalType.DATE)
 	private Date updateExp;
@@ -48,7 +48,7 @@ public class Experience implements Serializable{
 
 
 	public Experience(URL urlTravelGuide, byte[] imageExp, URL videoExp, String description,
-			statusExp statusExp, Date updateExp) {
+			StatusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;
@@ -106,12 +106,12 @@ public class Experience implements Serializable{
 		this.updateExp = updateExp;
 	}
 	
-	public statusExp getStatusExp() {
+	public StatusExp getStatusExp() {
 		return statusExp;
 	}
 
 
-	public void setStatusExp(statusExp statusExp) {
+	public void setStatusExp(StatusExp statusExp) {
 		this.statusExp = statusExp;
 	}
 
