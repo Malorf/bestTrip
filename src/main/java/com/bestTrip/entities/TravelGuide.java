@@ -49,8 +49,8 @@ public class TravelGuide implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name="travel_guides_transports", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="transport_id"))
-	private List<Transport> transports;
 	
+	private List<Transport> transports;
 	public TravelGuide() {
 	
 		

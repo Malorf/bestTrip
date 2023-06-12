@@ -15,6 +15,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
@@ -89,6 +91,7 @@ public class Transport implements Serializable{
 	}
 	
 	
+
 	public List<String> getTravelGuides() {
 		List<String> travelGuidesNames = new ArrayList<>();
 		for(TravelGuide travelGuide :transportsTravelGuides){

@@ -16,6 +16,9 @@ public class MaritimeTransport extends Transport implements Serializable {
 	private int boatClass;
 	
 	
+	public MaritimeTransport() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public MaritimeTransport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
 			int boatClass) {
