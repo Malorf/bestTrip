@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TRAVELGUIDES", schema = "best_trip_db")
 public class TravelGuide implements Serializable{
@@ -35,12 +37,14 @@ public class TravelGuide implements Serializable{
 	private StatusTravelGuide statusTravelGuide;
 	
 	//Relations
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne (fetch= FetchType.LAZY)
 	@JoinColumn(name="idAccount")
+	@JsonIgnore
 	private Account accountTravelGuide;
 	
 	@ManyToMany
 	@JoinTable(name="travel_guides_places", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="place_id"))
+	@JsonIgnore
 	private List<Place> places;
 	
 	@ManyToMany

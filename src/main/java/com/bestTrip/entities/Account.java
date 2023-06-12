@@ -53,7 +53,10 @@ public class Account {
 	private List<Review> reviews = new ArrayList<>();
 	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<TravelGuide> travelGuides = new ArrayList<>();
-	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+
+	@JsonIgnore
+	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+
 	private List<Experience> experiences = new ArrayList<>();
 	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Newsletter> newsletters = new ArrayList<>();

@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "EXPERIENCES", schema = "best_trip_db")
 
@@ -28,6 +30,7 @@ public class Experience implements Serializable{
 	private Long idExperience;
 	private String urlTravelGuide ;
 	private byte[] imageExp;
+
 	private String urlVideoExp;
 	private String description;
 	
@@ -36,9 +39,11 @@ public class Experience implements Serializable{
 	
 	@Temporal (TemporalType.DATE)
 	private Date updateExp;
-
-	@ManyToOne (fetch=FetchType.LAZY)
+	
+	@ManyToOne 
 	@JoinColumn(name="id_account")
+
+	
 	private Account accountExperience;
 	
 	
@@ -47,12 +52,16 @@ public class Experience implements Serializable{
 	}
 
 
+
 	public Experience(String urlTravelGuide, byte[] imageExp, String urlVideoExp, String description,
+
 			StatusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;
+
 		this.urlVideoExp = urlVideoExp;
+
 		this.description = description;
 		this.statusExp = statusExp;
 		this.updateExp = updateExp;
@@ -81,6 +90,7 @@ public class Experience implements Serializable{
 	public void setImageExp(byte[] imageExp) {
 		this.imageExp = imageExp;
 	}
+
 
 	public String getUrlVideoExp() {
 		return urlVideoExp;
@@ -115,11 +125,10 @@ public class Experience implements Serializable{
 		this.statusExp = statusExp;
 	}
 
-	
-	public Account getAccount() {
-		return accountExperience;
+	public String getAccount() {
+		return accountExperience.getProfileName();
 	}
-
+	
 
 	public void setAccount(Account account) {
 		this.accountExperience = account;
@@ -130,6 +139,7 @@ public class Experience implements Serializable{
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
 				+ Arrays.toString(imageExp) + ", videoExp=" + urlVideoExp + ", description=" + description + ", statusExp="
+
 				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
 
