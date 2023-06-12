@@ -1,12 +1,10 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "EXPERIENCES", schema = "best_trip_db")

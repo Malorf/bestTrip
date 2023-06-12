@@ -49,7 +49,7 @@ public class TravelGuide implements Serializable{
 	
 	@ManyToMany
 	@JoinTable(name="travel_guides_transports", joinColumns=@JoinColumn(name="travel_guide_id"), inverseJoinColumns =@JoinColumn(name="transport_id"))
-	
+	@JsonIgnore
 	private List<Transport> transports;
 	public TravelGuide() {
 	
@@ -147,6 +147,22 @@ public class TravelGuide implements Serializable{
 
 	public void setAccountTravelGuide(Account accountTravelGuide) {
 		this.accountTravelGuide = accountTravelGuide;
+	}
+
+	public List<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(List<Place> places) {
+		this.places = places;
+	}
+
+	public List<Transport> getTransports() {
+		return transports;
+	}
+
+	public void setTransports(List<Transport> transports) {
+		this.transports = transports;
 	}
 
 	@Override

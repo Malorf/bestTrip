@@ -15,7 +15,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -31,7 +30,6 @@ public class Transport implements Serializable{
 	private Float transportRating;
 	private Float timeTravel;
 	
-	//private SyndFeed rss;
 	
 	@ManyToMany(mappedBy="transports")
 	private List<TravelGuide> transportsTravelGuides;
