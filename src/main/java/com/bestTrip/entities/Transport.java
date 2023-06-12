@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
@@ -88,9 +89,15 @@ public class Transport implements Serializable{
 	}
 	
 	
-	public List<TravelGuide> getTransportsTravelGuides() {
-		return transportsTravelGuides;
+	public List<String> getTravelGuides() {
+		List<String> travelGuidesNames = new ArrayList<>();
+		for(TravelGuide travelGuide :transportsTravelGuides){
+			travelGuidesNames.add(travelGuide.getGuideName());
+		}
+			return travelGuidesNames;
+		
 	}
+
 	public void setTransportsTravelGuides(List<TravelGuide> transportsTravelGuides) {
 		this.transportsTravelGuides = transportsTravelGuides;
 	}
