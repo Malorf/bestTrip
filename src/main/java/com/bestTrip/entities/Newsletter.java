@@ -1,7 +1,6 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -16,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "NEWSLETTERS", schema = "best_trip_db")
 public class Newsletter implements Serializable{
@@ -25,17 +26,18 @@ public class Newsletter implements Serializable{
 	private Long idNewsletter;
 	@Temporal (TemporalType.DATE)
 	private Date publicationDate;
-	private URL favoriteTripOfTheMonth;
+	private String favoriteTripOfTheMonth;
 	private byte[] imageNewsletter;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="id_account")
+	
 	private Account accountNewsletter;
 	
 	public Newsletter() {
 		
 	}
 
-	public Newsletter(Date publicationDate, URL favoriteTripOfTheMonth, byte[] imageNewsletter) {
+	public Newsletter(Date publicationDate, String favoriteTripOfTheMonth, byte[] imageNewsletter) {
 		
 		this.publicationDate = publicationDate;
 		this.favoriteTripOfTheMonth = favoriteTripOfTheMonth;
@@ -58,11 +60,11 @@ public class Newsletter implements Serializable{
 		this.publicationDate = publicationDate;
 	}
 
-	public URL getFavoriteTripOfTheMonth() {
+	public String getFavoriteTripOfTheMonth() {
 		return favoriteTripOfTheMonth;
 	}
 
-	public void setFavoriteTripOfTheMonth(URL favoriteTripOfTheMonth) {
+	public void setFavoriteTripOfTheMonth(String favoriteTripOfTheMonth) {
 		this.favoriteTripOfTheMonth = favoriteTripOfTheMonth;
 	}
 
@@ -74,9 +76,10 @@ public class Newsletter implements Serializable{
 		this.imageNewsletter = imageNewsletter;
 	}
 	
-	public Account getAccount() {
-		return accountNewsletter;
+	public Long getAccount() {
+		return accountNewsletter.getIdAccount();
 	}
+	
 
 	public void setAccount(Account account) {
 		this.accountNewsletter= account;

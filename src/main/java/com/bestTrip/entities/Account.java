@@ -54,6 +54,7 @@ public class Account {
 	private List<Review> reviews = new ArrayList<>();
 	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL)
 	private List<TravelGuide> travelGuides = new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL)
 	private List<Experience> experiences = new ArrayList<>();
 	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL)

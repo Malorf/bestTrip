@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "EXPERIENCES", schema = "best_trip_db")
 
@@ -26,9 +28,9 @@ public class Experience implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExperience;
-	private URL urlTravelGuide ;
+	private String urlTravelGuide ;
 	private byte[] imageExp;
-	private URL videoExp;
+	private String urlvideoExp;
 	private String description;
 	
 	private enum StatusExp {waiting,approved,refused;}
@@ -36,9 +38,11 @@ public class Experience implements Serializable{
 	
 	@Temporal (TemporalType.DATE)
 	private Date updateExp;
-
-	@ManyToOne (fetch=FetchType.LAZY)
+	
+	@ManyToOne 
 	@JoinColumn(name="id_account")
+
+	
 	private Account accountExperience;
 	
 	
@@ -47,12 +51,12 @@ public class Experience implements Serializable{
 	}
 
 
-	public Experience(URL urlTravelGuide, byte[] imageExp, URL videoExp, String description,
+	public Experience(String urlTravelGuide, byte[] imageExp, String videoExp, String description,
 			StatusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;
-		this.videoExp = videoExp;
+		this.urlvideoExp = videoExp;
 		this.description = description;
 		this.statusExp = statusExp;
 		this.updateExp = updateExp;
@@ -66,11 +70,11 @@ public class Experience implements Serializable{
 		this.idExperience = idExperience;
 	}
 
-	public URL getUrlTravelGuide() {
+	public String getUrlTravelGuide() {
 		return urlTravelGuide;
 	}
 
-	public void setUrlTravelGuide(URL urlTravelGuide) {
+	public void setUrlTravelGuide(String urlTravelGuide) {
 		this.urlTravelGuide = urlTravelGuide;
 	}
 
@@ -82,12 +86,12 @@ public class Experience implements Serializable{
 		this.imageExp = imageExp;
 	}
 
-	public URL getVideoExp() {
-		return videoExp;
+	public String getVideoExp() {
+		return urlvideoExp;
 	}
 
-	public void setVideoExp(URL videoExp) {
-		this.videoExp = videoExp;
+	public void setVideoExp(String videoExp) {
+		this.urlvideoExp = videoExp;
 	}
 
 	public String getDescription() {
@@ -115,11 +119,10 @@ public class Experience implements Serializable{
 		this.statusExp = statusExp;
 	}
 
-	
-	public Account getAccount() {
-		return accountExperience;
+	public String getAccount() {
+		return accountExperience.getProfileName();
 	}
-
+	
 
 	public void setAccount(Account account) {
 		this.accountExperience = account;
@@ -129,7 +132,7 @@ public class Experience implements Serializable{
 	@Override
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
-				+ Arrays.toString(imageExp) + ", videoExp=" + videoExp + ", description=" + description + ", statusExp="
+				+ Arrays.toString(imageExp) + ", urlvideoExp=" + urlvideoExp + ", description=" + description + ", statusExp="
 				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
 
