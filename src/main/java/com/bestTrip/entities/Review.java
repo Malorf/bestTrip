@@ -68,8 +68,8 @@ public class Review implements Serializable  {
 	public void setReviewObjectId(Long reviewObjectId) {
 		this.reviewObjectId = reviewObjectId;
 	}
-	public Account getAccount() {
-		return accountReview;
+	public String getAccount() {
+		return accountReview.getProfileName();
 	}
 	public void setAccount(Account account) {
 		this.accountReview = account;

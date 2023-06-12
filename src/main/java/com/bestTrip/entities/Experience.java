@@ -30,7 +30,8 @@ public class Experience implements Serializable{
 	private Long idExperience;
 	private String urlTravelGuide ;
 	private byte[] imageExp;
-	private String urlvideoExp;
+
+	private String urlVideoExp;
 	private String description;
 	
 	private enum StatusExp {waiting,approved,refused;}
@@ -51,12 +52,16 @@ public class Experience implements Serializable{
 	}
 
 
-	public Experience(String urlTravelGuide, byte[] imageExp, String videoExp, String description,
+
+	public Experience(String urlTravelGuide, byte[] imageExp, String urlVideoExp, String description,
+
 			StatusExp statusExp, Date updateExp) {
 		super();
 		this.urlTravelGuide = urlTravelGuide;
 		this.imageExp = imageExp;
-		this.urlvideoExp = videoExp;
+
+		this.urlVideoExp = urlVideoExp;
+
 		this.description = description;
 		this.statusExp = statusExp;
 		this.updateExp = updateExp;
@@ -86,12 +91,13 @@ public class Experience implements Serializable{
 		this.imageExp = imageExp;
 	}
 
-	public String getVideoExp() {
-		return urlvideoExp;
+
+	public String getUrlVideoExp() {
+		return urlVideoExp;
 	}
 
-	public void setVideoExp(String videoExp) {
-		this.urlvideoExp = videoExp;
+	public void setUrlVideoExp(String urlVideoExp) {
+		this.urlVideoExp = urlVideoExp;
 	}
 
 	public String getDescription() {
@@ -132,7 +138,8 @@ public class Experience implements Serializable{
 	@Override
 	public String toString() {
 		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
-				+ Arrays.toString(imageExp) + ", urlvideoExp=" + urlvideoExp + ", description=" + description + ", statusExp="
+				+ Arrays.toString(imageExp) + ", videoExp=" + urlVideoExp + ", description=" + description + ", statusExp="
+
 				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
 

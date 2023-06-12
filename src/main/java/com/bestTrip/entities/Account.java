@@ -50,14 +50,15 @@ public class Account {
 	
 	//Associations
 	@OneToMany(mappedBy="accountReview", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-	@JsonIgnore
 	private List<Review> reviews = new ArrayList<>();
-	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<TravelGuide> travelGuides = new ArrayList<>();
+
 	@JsonIgnore
-	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+
 	private List<Experience> experiences = new ArrayList<>();
-	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Newsletter> newsletters = new ArrayList<>();
 	
 	public Account() {
@@ -162,7 +163,7 @@ public class Account {
 	public List<Review> getReviews() {
 		return reviews;
 	}
-
+	
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
