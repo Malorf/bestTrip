@@ -23,7 +23,7 @@ public class Review implements Serializable  {
 	private String comment;
 	private float userRating;
 	private Long reviewObjectId; 
-	@ManyToOne (fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn (name="idAccount")
 	private Account accountReview;
 	

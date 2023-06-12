@@ -17,6 +17,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.FetchType;
 
 
@@ -45,13 +49,14 @@ public class Account {
 	private boolean sub; //subscribe to the newsletter
 	
 	//Associations
-	@OneToMany(mappedBy="accountReview", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="accountReview", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Review> reviews = new ArrayList<>();
-	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="accountTravelGuide", cascade = CascadeType.ALL)
 	private List<TravelGuide> travelGuides = new ArrayList<>();
-	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL)
 	private List<Experience> experiences = new ArrayList<>();
-	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL)
 	private List<Newsletter> newsletters = new ArrayList<>();
 	
 	public Account() {
