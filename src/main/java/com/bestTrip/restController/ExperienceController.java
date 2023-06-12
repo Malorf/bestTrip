@@ -75,7 +75,7 @@ public class ExperienceController {
 			public Experience updateExperience(@PathVariable("idExperience") Long id, @RequestBody Experience experience) {
 				Experience currentExperience = experienceService.findOne(id);
 				currentExperience.setUrlTravelGuide(experience.getUrlTravelGuide());
-				currentExperience.setVideoExp(experience.getVideoExp());
+				currentExperience.setUrlVideoExp(experience.getUrlVideoExp());
 				currentExperience.setDescription(experience.getDescription());
 				currentExperience.setUpdateExp(experience.getUpdateExp());
 				currentExperience.setStatusExp(experience.getStatusExp());

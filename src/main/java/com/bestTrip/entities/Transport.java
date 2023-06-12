@@ -91,17 +91,16 @@ public class Transport implements Serializable{
 	}
 	
 	
-	
-	
-	public List<String> gettransportsTravelGuides() {
+
+	public List<String> getTravelGuides() {
 		List<String> travelGuidesNames = new ArrayList<>();
-		for(TravelGuide travelGuide : transportsTravelGuides){
+		for(TravelGuide travelGuide :transportsTravelGuides){
 			travelGuidesNames.add(travelGuide.getGuideName());
 		}
 			return travelGuidesNames;
-	}
-	
 		
+	}
+
 	public void setTransportsTravelGuides(List<TravelGuide> transportsTravelGuides) {
 		this.transportsTravelGuides = transportsTravelGuides;
 	}

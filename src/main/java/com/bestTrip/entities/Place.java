@@ -1,10 +1,13 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.bestTrip.models.Adress;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -29,7 +33,7 @@ public class Place implements Serializable {
 	private Float placeRating;
 	private Float placeCost;
 	
-	@ManyToMany(mappedBy="places")
+	@ManyToMany(mappedBy="places", cascade = CascadeType.ALL)
 	private List<TravelGuide> placesTravelGuides;
 	
 	public Place() {
@@ -97,8 +101,15 @@ public class Place implements Serializable {
 
 	
 	
-	public List<TravelGuide> getTravelGuides() {
-		return placesTravelGuides;
+	public List<String> getTravelGuides() {
+		List<String> travelGuidesNames = new ArrayList<>();
+		for(TravelGuide travelGuide :placesTravelGuides){
+			travelGuidesNames.add(travelGuide.getGuideName());
+		}
+			return travelGuidesNames;
+		
+		
+		
 	}
 
 	public void setTravelGuides(List<TravelGuide> travelGuides) {
