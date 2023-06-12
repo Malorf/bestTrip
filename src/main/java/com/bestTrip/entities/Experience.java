@@ -119,8 +119,8 @@ public class Experience implements Serializable{
 		this.statusExp = statusExp;
 	}
 
-	public String getAccount() {
-		return accountExperience.getProfileName();
+	public Long getAccount() {
+		return accountExperience.getIdAccount();
 	}
 	
 
