@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		{
 			http
 				.authorizeRequests()
-				.anyRequest().authenticated()
+				.anyRequest().permitAll()
 				.and()
 				.formLogin()
 					.permitAll()
@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 			source.registerCorsConfiguration("/**", config);
 
-			FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+			FilterRegistrationBean bean = new FilterRegistrationBean (new CorsFilter(source));
 			bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 			return bean;
 		}
