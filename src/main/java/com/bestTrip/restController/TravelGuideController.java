@@ -18,46 +18,53 @@ import com.bestTrip.services.interfaces.ITravelGuideService;
 @RestController
 @CrossOrigin
 public class TravelGuideController {
-	@Autowired 
+	@Autowired
 	ITravelGuideService travelGuideService;
-	
 
-	
-		@GetMapping("/travelGuides")
-		public List<TravelGuide> findAll() {
-			return travelGuideService.findAll();
-		}
-
-		
-		@GetMapping("/travelGuides/{idTravelGuide}")
-		public TravelGuide findOne(@PathVariable("idTravelGuide") Long id) {
-			return travelGuideService.findOne(id);
-		}
-
-		
-		@PostMapping("/travelGuides")
-		public TravelGuide saveTravelGuide(@RequestBody TravelGuide travelGuide) {
-			return travelGuideService.save(travelGuide);
-		}
-
-		
-		@DeleteMapping("/travelGuides/{idTravelGuide}")
-		public void deleteTravelGuide(@PathVariable("idTravelGuide") Long id) {
-			travelGuideService.delete(id);
-		}
-
-		
-		@PutMapping("/travelGuides/{idTravelGuide}")
-		public TravelGuide updateTravelGuide(@PathVariable("idTravelGuide") Long id, @RequestBody TravelGuide travelGuide) {
-			TravelGuide currentTravelGuide = travelGuideService.findOne(id);
-			currentTravelGuide.setGuideName(travelGuide.getGuideName());
-			currentTravelGuide.setGlobalRating(travelGuide.getGlobalRating());
-			currentTravelGuide.setCountryName(travelGuide.getCountryName());
-			currentTravelGuide.setTotalCost(travelGuide.getTotalCost());
-			currentTravelGuide.setStatusTravelGuide(travelGuide.getStatusTravelGuide());
-			currentTravelGuide.setUpdateTravelGuide(travelGuide.getUpdateTravelGuide());
-			return travelGuideService.save(currentTravelGuide);
-		}
-
+	@GetMapping("/travelGuides")
+	public List<TravelGuide> findAll() {
+		return travelGuideService.findAll();
 	}
-	
+
+	@GetMapping("/travelGuides/{idTravelGuide}")
+	public TravelGuide findOne(@PathVariable("idTravelGuide") Long id) {
+		return travelGuideService.findOne(id);
+	}
+
+	@GetMapping("/travelGuides/{countryName}")
+	public List<TravelGuide> findByCountryName(@PathVariable("countryName") String countryName) {
+		return travelGuideService.findByCountryName(countryName);
+	}
+
+	@GetMapping("/travelGuides/{totalCost}")
+	public List<TravelGuide> findByTotalCost(@PathVariable("totalCost") float totalCost) {
+		return travelGuideService.findByTotalCost(totalCost);
+	}
+	@GetMapping("/travelGuides/{globalRating}")
+	public List<TravelGuide> findByglobalRating(@PathVariable("globalRating") float globalRating) {
+		return travelGuideService.findByGlobalRating(globalRating);
+	}
+
+	@PostMapping("/travelGuides")
+	public TravelGuide saveTravelGuide(@RequestBody TravelGuide travelGuide) {
+		return travelGuideService.save(travelGuide);
+	}
+
+	@DeleteMapping("/travelGuides/{idTravelGuide}")
+	public void deleteTravelGuide(@PathVariable("idTravelGuide") Long id) {
+		travelGuideService.delete(id);
+	}
+
+	@PutMapping("/travelGuides/{idTravelGuide}")
+	public TravelGuide updateTravelGuide(@PathVariable("idTravelGuide") Long id, @RequestBody TravelGuide travelGuide) {
+		TravelGuide currentTravelGuide = travelGuideService.findOne(id);
+		currentTravelGuide.setGuideName(travelGuide.getGuideName());
+		currentTravelGuide.setGlobalRating(travelGuide.getGlobalRating());
+		currentTravelGuide.setCountryName(travelGuide.getCountryName());
+		currentTravelGuide.setTotalCost(travelGuide.getTotalCost());
+		currentTravelGuide.setStatusTravelGuide(travelGuide.getStatusTravelGuide());
+		currentTravelGuide.setUpdateTravelGuide(travelGuide.getUpdateTravelGuide());
+		return travelGuideService.save(currentTravelGuide);
+	}
+
+}
