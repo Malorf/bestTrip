@@ -32,7 +32,12 @@ public class ExperienceController {
 			public List<Experience> findAll() {
 				return experienceService.findAll();
 			}
-
+			
+			@GetMapping("/experiences/{date}")
+			public List<Experience> findByUpdateExp(@PathVariable("date") Date date){
+				return experienceService.findByUpdateExp(date);
+			}
+			
 			//@RequestMapping(value = "experiences/{idExperience}", method = RequestMethod.GET)
 			@GetMapping("/experiences/{idExperience}")
 			public Experience findOne(@PathVariable("idExperience") Long id) {

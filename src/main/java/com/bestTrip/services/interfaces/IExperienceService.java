@@ -1,5 +1,6 @@
 package com.bestTrip.services.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import com.bestTrip.entities.Experience;
@@ -14,4 +15,5 @@ public interface IExperienceService {
 
 	void delete(Long id);
 
+	List<Experience> findByUpdateExp (Date date);
 }

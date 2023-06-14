@@ -1,5 +1,6 @@
 package com.bestTrip.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class ExperienceService implements IExperienceService {
 	public void delete(Long id) {
 		experienceRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Experience> findByUpdateExp(Date date) {
+		
+		return experienceRepository.findByUpdateExp(date);
 	}
 
 }
