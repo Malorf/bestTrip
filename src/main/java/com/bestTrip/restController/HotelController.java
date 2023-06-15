@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bestTrip.entities.Hotel;
+import com.bestTrip.entities.Place;
 import com.bestTrip.services.interfaces.IHotelService;
 
 @RestController
@@ -29,10 +30,13 @@ public class HotelController {
 		}
 
 		//@RequestMapping(value = "hotels/{idHotel}", method = RequestMethod.GET)
-		@GetMapping("/hotels/{idHotel}")
-		public Hotel findOne(@PathVariable("idHotel") Long id) {
-			return hotelService.findOne(id);
+		@GetMapping("/hotels/{placeName}")
+		public List<Hotel> findByPlaceName(@PathVariable("placeName") String placeName) {
+			return hotelService.findByPlaceName(placeName);
 		}
+		/*public Hotel findOne(@PathVariable("idHotel") Long id) {
+			return hotelService.findOne(id);
+		}*/
 
 		//@RequestMapping(value = "hotels", method = RequestMethod.POST)
 		@PostMapping("/hotels")

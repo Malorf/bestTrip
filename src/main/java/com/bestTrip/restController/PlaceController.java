@@ -29,9 +29,13 @@ public class PlaceController {
 
 		//@RequestMapping(value = "places/{idPlace}", method = RequestMethod.GET)
 		@GetMapping("/places/{idPlace}")
-		public Place findOne(@PathVariable("idPlace") Long id) {
-			return placeService.findOne(id);
+		public List<Place> findByPlaceName(@PathVariable("placeName") String placeName) {
+			return placeService.findByPlaceName(placeName);
 		}
+		
+		/*public Place findOne(@PathVariable("idPlace") Long id) {
+			return placeService.findOne(id);
+		}*/
 
 		//@RequestMapping(value = "places", method = RequestMethod.POST)
 		@PostMapping("/places")

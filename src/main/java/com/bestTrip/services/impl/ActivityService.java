@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bestTrip.entities.Activity;
+import com.bestTrip.entities.Place;
 import com.bestTrip.entities.Activity;
 import com.bestTrip.repositories.ActivityRepository;
 import com.bestTrip.services.interfaces.IActivityService;
@@ -39,8 +40,11 @@ public class ActivityService implements IActivityService {
 	}
 
 	@Override
-	public Activity findByNamePlace(String namePlace) {
-		return activityRepository.findByPlaceName(namePlace);
+	public List<Activity> findByPlaceName(String placeName) {
+
+		return activityRepository.findByPlaceName(placeName);
 	}
+
+
 
 }

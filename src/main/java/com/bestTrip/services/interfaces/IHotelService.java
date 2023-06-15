@@ -3,6 +3,7 @@ package com.bestTrip.services.interfaces;
 import java.util.List;
 
 import com.bestTrip.entities.Hotel;
+import com.bestTrip.entities.Place;
 
 public interface IHotelService {
 
@@ -14,6 +15,5 @@ public interface IHotelService {
 
 	void delete(Long id);
 	
-	Hotel findByNamePlace(String namePlace);
-	
+	List<Hotel> findByPlaceName(String placeName);
 }

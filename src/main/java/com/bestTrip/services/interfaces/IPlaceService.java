@@ -16,4 +16,7 @@ public interface IPlaceService {
 	Place save(Place place);
 
 	void delete(Long id);
+	
+	List<Place> findByPlaceName(String placeName);
 }
+

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.bestTrip.entities.Activity;
+import com.bestTrip.entities.Place;
 import com.bestTrip.services.interfaces.IActivityService;
 
 public class ActivityController {
@@ -25,9 +26,13 @@ public class ActivityController {
 
 		//@RequestMapping(value = "activitys/{idActivity}", method = RequestMethod.GET)
 		@GetMapping("/activitys/{idActivity}")
-		public Activity findOne(@PathVariable("idActivity") Long id) {
-			return activityService.findOne(id);
+		public List<Activity> findByPlaceName(@PathVariable("placeName") String placeName) {
+			return activityService.findByPlaceName(placeName);
 		}
+		
+		/*public Activity findOne(@PathVariable("idActivity") Long id) {
+			return activityService.findOne(id);
+		}*/
 
 		//@RequestMapping(value = "activitys", method = RequestMethod.POST)
 		@PostMapping("/activitys")
