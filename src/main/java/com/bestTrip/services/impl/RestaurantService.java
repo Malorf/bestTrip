@@ -10,7 +10,7 @@ import com.bestTrip.repositories.RestaurantRepository;
 import com.bestTrip.services.interfaces.IRestaurantService;
 
 @Service
-public class RestaurantService implements IRestaurantService{
+public  class RestaurantService implements IRestaurantService{
 
 	@Autowired
 	RestaurantRepository restaurantRepository; 
@@ -38,8 +38,10 @@ public class RestaurantService implements IRestaurantService{
 	}
 
 	@Override
-	public Restaurant findByNamePlace(String namePlace) {
-		return restaurantRepository.findByPlaceName(namePlace);
+	public List<Restaurant> findByPlaceName(String placeName) {
+		// TODO Auto-generated method stub
+		return restaurantRepository.findByPlaceName(placeName);
 	}
+
 
 }

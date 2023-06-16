@@ -8,7 +8,7 @@ import com.bestTrip.entities.MaritimeTransport;
 
 @Repository
 public interface MaritimeTransportRepository extends JpaRepository<MaritimeTransport, Long>{
-	MaritimeTransport findByNameCompany (String nameCompany);
+
 }
 
 

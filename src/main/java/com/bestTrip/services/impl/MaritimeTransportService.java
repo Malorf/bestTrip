@@ -38,10 +38,7 @@ public class MaritimeTransportService implements IMaritimeTransportService{
 	}
 
 
-	@Override
-	public MaritimeTransport findByNameCompany(String nameCompany) {
-		// TODO Auto-generated method stub
-		return maritimeTransportRepository.findByNameCompany(nameCompany);
-	}
+
+
 
 }

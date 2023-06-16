@@ -13,5 +13,5 @@ public interface IRestaurantService {
 
 	void delete(Long id);
 	
-	Restaurant findByNamePlace(String namePlace);
+	List<Restaurant> findByPlaceName(String placeName);
 }

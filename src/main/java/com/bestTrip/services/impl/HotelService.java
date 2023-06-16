@@ -39,8 +39,13 @@ public class HotelService implements IHotelService{
 	}
 
 	@Override
-	public Hotel findByNamePlace(String namePlace) {
-		return hotelRepository.findByPlaceName(namePlace);
+	public List<Hotel> findByPlaceName(String placeName) {
+		// TODO Auto-generated method stub
+		return hotelRepository.findByPlaceName(placeName);
 	}
+
+
+
+
 
 }

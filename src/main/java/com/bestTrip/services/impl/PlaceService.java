@@ -39,5 +39,13 @@ public class PlaceService implements IPlaceService{
 		placeRepository.deleteById(id);
 		
 	}
+
+	
+
+	@Override
+	public List<Place> findByPlaceName(String placeName) {
+
+		return placeRepository.findByPlaceName(placeName);
+	}
 	
 }

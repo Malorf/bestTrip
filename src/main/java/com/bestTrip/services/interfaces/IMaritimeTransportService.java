@@ -16,5 +16,4 @@ public interface IMaritimeTransportService {
 
 	void delete(Long id);
 	
-	MaritimeTransport findByNameCompany(String nameCompany);
 }
