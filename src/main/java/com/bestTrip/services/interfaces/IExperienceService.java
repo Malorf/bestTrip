@@ -6,7 +6,7 @@ import java.util.List;
 import com.bestTrip.entities.Experience;
 
 public interface IExperienceService {
-	
+
 	List<Experience> findAll();
 
 	Experience findOne(Long id);
@@ -15,5 +15,5 @@ public interface IExperienceService {
 
 	void delete(Long id);
 
-	List<Experience> findByUpdateExp (Date date);
+	List<Experience> findByUpdateExp(Date date);
 }

@@ -55,7 +55,7 @@ public class Account {
 	private List<TravelGuide> travelGuides = new ArrayList<>();
 
 	@JsonIgnore
-	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="accountExperience", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<Experience> experiences = new ArrayList<>();
 	
 	@OneToMany(mappedBy="accountNewsletter", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
