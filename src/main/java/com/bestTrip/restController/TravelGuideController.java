@@ -31,24 +31,18 @@ public class TravelGuideController {
 		return travelGuideService.findOne(id);
 	}
 
-	@GetMapping("/travelGuides/{countryName}")
-	public List<TravelGuide> findByCountryName(@PathVariable("countryName") String countryName) {
-		return travelGuideService.findByCountryName(countryName);
-	}
-
-	@GetMapping("/travelGuides/{totalCost}")
-	public List<TravelGuide> findByTotalCost(@PathVariable("totalCost") float totalCost) {
-		return travelGuideService.findByTotalCost(totalCost);
-	}
-	@GetMapping("/travelGuides/{globalRating}")
-	public List<TravelGuide> findByglobalRating(@PathVariable("globalRating") float globalRating) {
-		return travelGuideService.findByGlobalRating(globalRating);
+	@GetMapping("/travelGuides/{countryName}/{totalCost} /{globalRating}")
+	public List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating(@PathVariable(name="countryName", required= false) String countryName, @PathVariable(name="totalCost", required=false) float totalCost,
+	@PathVariable(name="globalRating", required=false)float globalRating) {
+	return travelGuideService.findByCountryNameAndTotalCostAndGlobalRating(countryName, totalCost,globalRating);
 	}
 
 	@PostMapping("/travelGuides")
 	public TravelGuide saveTravelGuide(@RequestBody TravelGuide travelGuide) {
 		return travelGuideService.save(travelGuide);
 	}
+	
+
 
 	@DeleteMapping("/travelGuides/{idTravelGuide}")
 	public void deleteTravelGuide(@PathVariable("idTravelGuide") Long id) {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.bestTrip.entities.Transport;
 
-@Service
+
 public interface ITransportService {
 
 	List<Transport> findAll();
@@ -17,6 +17,6 @@ public interface ITransportService {
 
 	void delete(Long id);
 	
-	Transport findByNameCompany(String nameCompany);
+	List<Transport> findByNameCompany(String nameCompany);
 	
 }

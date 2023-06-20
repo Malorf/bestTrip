@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -15,17 +16,14 @@ public class Restaurant extends Place implements Serializable{
 
 		private boolean takeAway;
 		
-		public Restaurant() {
-			// TODO Auto-generated constructor stub
-		}
-
+		public Restaurant() {}
 		
-
-		public Restaurant(String placeName, Adress adress, Float placeRating, Float placeCost, boolean takeAway) {
-			super(placeName, adress, placeRating, placeCost);
+	
+		public Restaurant(String placeName, Adress adress, Float placeRating, Float placeCost, String desciption,
+				List<TravelGuide> placesTravelGuides, boolean takeAway) {
+			super(placeName, adress, placeRating, placeCost, desciption, placesTravelGuides);
 			this.takeAway = takeAway;
 		}
-
 
 
 		/**

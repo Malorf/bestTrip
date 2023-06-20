@@ -1,23 +1,27 @@
 package com.bestTrip.restController;
 
+
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bestTrip.entities.Experience;
-import com.bestTrip.entities.Newsletter;
+
 import com.bestTrip.services.interfaces.IExperienceService;
 
 @RestController
@@ -34,15 +38,16 @@ public class ExperienceController {
 			}
 			
 			@GetMapping("/experiences/{date}")
-			public List<Experience> findByUpdateExp(@PathVariable("date") Date date){
+			
+			public List<Experience> findByUpdateExp(@PathVariable("date") @DateTimeFormat(pattern= "yyyy-MM-dd")  Date date){
 				return experienceService.findByUpdateExp(date);
 			}
 			
 			//@RequestMapping(value = "experiences/{idExperience}", method = RequestMethod.GET)
-			@GetMapping("/experiences/{idExperience}")
+			/*@GetMapping("/experiences/{idExperience}")
 			public Experience findOne(@PathVariable("idExperience") Long id) {
 				return experienceService.findOne(id);
-			}
+			}*/
 
 			//@RequestMapping(value = "experiences", method = RequestMethod.POST)
 			@PostMapping("/experiences")
@@ -52,14 +57,13 @@ public class ExperienceController {
 			
 			/*@PostMapping("/experiences")
 			public String saveExperience(@RequestParam("urlTravelGuide") URL urlTravelGuide,@RequestParam("videoExp") URL videoExp, @RequestParam("description") String description,
-					@RequestParam("updateExp") Date updateExp, @RequestParam("statusExp") statusExp statusExp,@RequestParam("imageNewsletter") MultipartFile imageExp) {
+					@RequestParam("updateExp") Date updateExp,@RequestParam("imageNewsletter") MultipartFile imageExp) {
 				try {
 					Experience currentUser=new Experience();
 					currentUser.setUrlTravelGuide(urlTravelGuide);
-					currentUser.setVideoExp(videoExp);
+					currentUser.setUrlVideoExp(videoExp);
 					currentUser.setDescription(description);
 					currentUser.setUpdateExp(updateExp);
-					currentUser.setStatusExp(statusExp);
 					currentUser.setImageExp(imageExp.getBytes());
 					experienceService.save(currentUser);
 					return "Success";

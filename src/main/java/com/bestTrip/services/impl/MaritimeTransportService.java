@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bestTrip.entities.MaritimeTransport;
+import com.bestTrip.entities.Transport;
 import com.bestTrip.repositories.MaritimeTransportRepository;
 import com.bestTrip.services.interfaces.IMaritimeTransportService;
 
@@ -33,10 +34,15 @@ public class MaritimeTransportService implements IMaritimeTransportService{
 
 	@Override
 	public void delete(Long id) {
-		maritimeTransportRepository.deleteById(id);
+		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public List<MaritimeTransport> findByNameCompany(String nameCompany) {
+		// TODO Auto-generated method stub
+		return maritimeTransportRepository.findByNameCompany(nameCompany);
+	}
 
 
 

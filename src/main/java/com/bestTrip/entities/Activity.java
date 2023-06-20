@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -19,10 +20,15 @@ public class Activity extends Place implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Activity(String placeName, Adress adress, Float placeRating, Float placeCost, boolean free) {
-		super(placeName, adress, placeRating, placeCost);
+	
+
+	public Activity(String placeName, Adress adress, Float placeRating, Float placeCost, String desciption,
+			List<TravelGuide> placesTravelGuides, boolean free) {
+		super(placeName, adress, placeRating, placeCost, desciption, placesTravelGuides);
 		this.free = free;
 	}
+
+
 
 	/**
 	 * @return the free

@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -14,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "EXPERIENCES", schema = "best_trip_db")
@@ -25,10 +28,10 @@ public class Experience implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExperience;
-	private String urlTravelGuide ;
+	private URL urlTravelGuide ;
 	private byte[] imageExp;
 
-	private String urlVideoExp;
+	private URL urlVideoExp;
 	private String description;
 	
 	private enum StatusExp {waiting,approved,refused;}
@@ -50,7 +53,7 @@ public class Experience implements Serializable{
 
 
 
-	public Experience(String urlTravelGuide, byte[] imageExp, String urlVideoExp, String description,
+	public Experience(URL urlTravelGuide, byte[] imageExp, URL urlVideoExp, String description,
 
 			StatusExp statusExp, Date updateExp) {
 		super();
@@ -72,12 +75,12 @@ public class Experience implements Serializable{
 		this.idExperience = idExperience;
 	}
 
-	public String getUrlTravelGuide() {
+	public URL getUrlTravelGuide() {
 		return urlTravelGuide;
 	}
 
-	public void setUrlTravelGuide(String urlTravelGuide) {
-		this.urlTravelGuide = urlTravelGuide;
+	public void setUrlTravelGuide(URL urlTravelGuide2) {
+		this.urlTravelGuide = urlTravelGuide2;
 	}
 
 	public byte[] getImageExp() {
@@ -89,12 +92,12 @@ public class Experience implements Serializable{
 	}
 
 
-	public String getUrlVideoExp() {
+	public URL getUrlVideoExp() {
 		return urlVideoExp;
 	}
 
-	public void setUrlVideoExp(String urlVideoExp) {
-		this.urlVideoExp = urlVideoExp;
+	public void setUrlVideoExp(URL videoExp) {
+		this.urlVideoExp = videoExp;
 	}
 
 	public String getDescription() {

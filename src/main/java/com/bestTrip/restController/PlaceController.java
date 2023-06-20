@@ -28,7 +28,7 @@ public class PlaceController {
 		}
 
 		//@RequestMapping(value = "places/{idPlace}", method = RequestMethod.GET)
-		@GetMapping("/places/{idPlace}")
+		@GetMapping("/places/{placeName}")
 		public List<Place> findByPlaceName(@PathVariable("placeName") String placeName) {
 			return placeService.findByPlaceName(placeName);
 		}
@@ -58,6 +58,7 @@ public class PlaceController {
 			currentPlace.setPlaceCost(place.getPlaceCost());
 			currentPlace.setPlaceName(place.getPlaceName());
 			currentPlace.setPlaceRating(place.getPlaceRating());
+			currentPlace.setDesciption(place.getDesciption());
 			return placeService.save(currentPlace);
 		}
 

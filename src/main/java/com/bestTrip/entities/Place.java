@@ -5,13 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -30,32 +35,38 @@ public class Place implements Serializable {
 	private Adress adress;
 	private Float placeRating;
 	private Float placeCost;
+	private String desciption;
 	
 	@ManyToMany(mappedBy="places", cascade = CascadeType.ALL)
 	private List<TravelGuide> placesTravelGuides;
+	
 	
 	public Place() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Place(String placeName, Adress adress, Float placeRating, Float placeCost) {
+	
+	
+	
+	
+	
+
+
+
+
+	public Place(String placeName, Adress adress, Float placeRating, Float placeCost, String desciption,
+			List<TravelGuide> placesTravelGuides) {
 		super();
 		this.placeName = placeName;
 		this.adress = adress;
 		this.placeRating = placeRating;
 		this.placeCost = placeCost;
+		this.desciption = desciption;
+		this.placesTravelGuides = placesTravelGuides;
 	}
-	
-	
-	
-	public Place(String placeName, Adress adress, Float placeRating, Float placeCost, List<TravelGuide> travelGuides) {
-		super();
-		this.placeName = placeName;
-		this.adress = adress;
-		this.placeRating = placeRating;
-		this.placeCost = placeCost;
-		this.placesTravelGuides = travelGuides;
-	}
+
+
+
 
 	public Long getIdPlace() {
 		return idPlace;
@@ -96,9 +107,63 @@ public class Place implements Serializable {
 	public void setPlaceCost(Float placeCost) {
 		this.placeCost = placeCost;
 	}
+	
+	
 
 	
 	
+	public String getDesciption() {
+		return desciption;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+
+
+
+
+
+
+
+
+
+
+	public List<TravelGuide> getPlacesTravelGuides() {
+		return placesTravelGuides;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setPlacesTravelGuides(List<TravelGuide> placesTravelGuides) {
+		this.placesTravelGuides = placesTravelGuides;
+	}
+
+
+
+
+
+
+
+
+
+
 	public List<String> getTravelGuides() {
 		List<String> travelGuidesNames = new ArrayList<>();
 		for(TravelGuide travelGuide :placesTravelGuides){
@@ -114,12 +179,25 @@ public class Place implements Serializable {
 		this.placesTravelGuides = travelGuides;
 	}
 
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Place [idPlace=" + idPlace + ", placeName=" + placeName + ", adress=" + adress + ", placeRating="
-				+ placeRating + ", placeCost=" + placeCost + ", travelGuides=" + placesTravelGuides + "]";
+				+ placeRating + ", placeCost=" + placeCost + ", desciption=" + desciption + ", placesTravelGuides="
+				+ placesTravelGuides + "]";
 	}
 
+	
+	
+	
 
 	
 	

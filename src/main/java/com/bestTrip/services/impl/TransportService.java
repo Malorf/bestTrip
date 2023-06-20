@@ -38,7 +38,10 @@ public class TransportService implements ITransportService{
 	}
 
 	@Override
-	public Transport findByNameCompany(String nameCompany) {
-		return findByNameCompany(nameCompany);
+	public List<Transport> findByNameCompany(String nameCompany) {
+		// TODO Auto-generated method stub
+		return transportRepository.findByNameCompany(nameCompany);
 	}
+
+
 }

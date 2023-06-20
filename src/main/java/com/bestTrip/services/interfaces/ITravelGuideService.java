@@ -14,8 +14,6 @@ public interface ITravelGuideService {
 
 	void delete(Long id);
 
-	List<TravelGuide> findByCountryName (String countryName);
-	List<TravelGuide> findByTotalCost (float totalCost);
-	List<TravelGuide> findByGlobalRating (float globalRating);
+	List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating (String countryName, float totalCost, float globalRating);
 	
 }
