@@ -1,5 +1,6 @@
 package com.bestTrip.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class NewsletterService implements INewsletterService {
 	public void delete(Long id) {
 		newsletterRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Newsletter> findByPublicationDate(Date publicationDate) {
+		return newsletterRepository.findByPublicationDate(publicationDate);
 	}
 }

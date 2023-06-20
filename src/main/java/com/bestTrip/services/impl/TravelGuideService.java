@@ -36,18 +36,9 @@ public class TravelGuideService implements ITravelGuideService {
 	}
 
 	@Override
-	public List<TravelGuide> findByCountryName(String countryName) {
-		return travelGuideRepository.findByCountryName(countryName);
+	public List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating(String countryName, float totalCost, float globalRating) {
+		return travelGuideRepository.findByCountryNameAndTotalCostAndGlobalRating(countryName, totalCost, globalRating);
 	}
 
-	@Override
-	public List<TravelGuide> findByTotalCost(float totalCost) {
-		return travelGuideRepository.findByTotalCost(totalCost); 
-	}
-
-	@Override
-	public List<TravelGuide> findByGlobalRating(float globalRating) {
-		return travelGuideRepository.findByGlobalRating (globalRating);
-	}
 
 }
