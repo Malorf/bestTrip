@@ -5,14 +5,18 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -21,12 +25,12 @@ import javax.persistence.TemporalType;
 public class Experience implements Serializable{
 	
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExperience;
 	private String urlTravelGuide ;
-	private byte[] imageExp;
+	/*@Lob
+	private byte[] imageExp;*/
 
 	private String urlVideoExp;
 	private String description;
@@ -37,10 +41,9 @@ public class Experience implements Serializable{
 	@Temporal (TemporalType.DATE)
 	private Date updateExp;
 	
-	@ManyToOne 
+	@ManyToOne (fetch= FetchType.LAZY)
 	@JoinColumn(name="id_account")
-
-	
+	@JsonIgnore
 	private Account accountExperience;
 	
 	
@@ -49,20 +52,18 @@ public class Experience implements Serializable{
 	}
 
 
-
-	public Experience(String urlTravelGuide, byte[] imageExp, String urlVideoExp, String description,
-
-			StatusExp statusExp, Date updateExp) {
-		super();
+	public Experience(String urlTravelGuide, String urlVideoExp, String description, StatusExp statusExp,
+			Date updateExp, Account accountExperience) {
+		
 		this.urlTravelGuide = urlTravelGuide;
-		this.imageExp = imageExp;
-
 		this.urlVideoExp = urlVideoExp;
-
 		this.description = description;
 		this.statusExp = statusExp;
 		this.updateExp = updateExp;
+		//this.accountExperience = accountExperience;
 	}
+
+
 
 	public Long getIdExperience() {
 		return idExperience;
@@ -80,14 +81,7 @@ public class Experience implements Serializable{
 		this.urlTravelGuide = urlTravelGuide;
 	}
 
-	public byte[] getImageExp() {
-		return imageExp;
-	}
-
-	public void setImageExp(byte[] imageExp) {
-		this.imageExp = imageExp;
-	}
-
+	
 
 	public String getUrlVideoExp() {
 		return urlVideoExp;
@@ -134,8 +128,7 @@ public class Experience implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide + ", imageExp="
-				+ Arrays.toString(imageExp) + ", videoExp=" + urlVideoExp + ", description=" + description + ", statusExp="
+		return "Experience [idExperience=" + idExperience + ", urlTravelGuide=" + urlTravelGuide  + ", videoExp=" + urlVideoExp + ", description=" + description + ", statusExp="
 
 				+ statusExp + ", updateExp=" + updateExp + ", account=" + accountExperience + "]";
 	}
