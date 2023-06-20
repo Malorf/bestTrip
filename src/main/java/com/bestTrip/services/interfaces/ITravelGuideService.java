@@ -16,4 +16,5 @@ public interface ITravelGuideService {
 
 	List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating (String countryName, float totalCost, float globalRating);
 	
+	
 }

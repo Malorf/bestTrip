@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.bestTrip.entities.Experience;
 
 @Repository
-public interface ExperienceRepository extends JpaRepository<Experience, Long>{
-		
-		List<Experience> findByUpdateExp (Date date);
+public interface ExperienceRepository extends JpaRepository<Experience, Long> {
+
+	List<Experience> findByUpdateExp(Date date);
 }

@@ -55,13 +55,10 @@ public class AccountController {
 	{
 		Account currentAccount = accountService.findOne(id);
 		currentAccount.seteMail(account.geteMail());
-		currentAccount.setImageAccount(account.getImageAccount());
 		currentAccount.setUsername(account.getUsername());
-		currentAccount.setPassword(passwordEncoder.encode(account.getPassword()));
+		currentAccount.setPassword(account.getPassword());
 		currentAccount.setRoles(account.getRoles());
 		currentAccount.setProfileName(account.getProfileName());
-		currentAccount.setNumberOfExepriencesShared(account.getNumberOfExepriencesShared());
-		currentAccount.setNumberOfGuideContributions(account.getNumberOfGuideContributions());
 		currentAccount.setSub(account.isSub());
 		return accountService.save(currentAccount);
 	}

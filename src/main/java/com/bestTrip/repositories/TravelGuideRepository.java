@@ -9,7 +9,9 @@ import com.bestTrip.entities.TravelGuide;
 
 @Repository
 public interface TravelGuideRepository extends JpaRepository<TravelGuide, Long>{
-	 List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating (String countryName, float totalCost, float globalRating);
+	List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating (String countryName, float totalCost, float globalRating);
+
+
 	
 	
 }

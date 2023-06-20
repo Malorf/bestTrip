@@ -1,7 +1,8 @@
 package com.bestTrip.restController;
 
 
-import java.net.URL;
+
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,81 +16,95 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.bestTrip.entities.Experience;
 
+
 import com.bestTrip.services.interfaces.IExperienceService;
+
 
 @RestController
 @CrossOrigin
 public class ExperienceController {
-	
+
 	@Autowired
 	IExperienceService experienceService;
+
+	// @RequestMapping(value = "experiences", method = RequestMethod.GET)
+	@GetMapping("/experiences")
+	public List<Experience> findAll() {
+		return experienceService.findAll();
+	}
+
+	@GetMapping("/experiences/{date}")
+	public List<Experience> findByUpdateExp(@PathVariable("date") @DateTimeFormat(pattern= "yyyy-MM-dd") Date date) {
+		return experienceService.findByUpdateExp(date);
+	}
+
+	// @RequestMapping(value = "experiences/{idExperience}", method =
+	// RequestMethod.GET)
+
+	 /*@GetMapping("/experiences/{idExperience}") public Experience
+	 findOne(@PathVariable("idExperience") Long id) { return
+	 experienceService.findOne(id); }*/
+	 
+
+	// @RequestMapping(value = "experiences", method = RequestMethod.POST)
 	
-	//@RequestMapping(value = "experiences", method = RequestMethod.GET)
-			@GetMapping("/experiences")
-			public List<Experience> findAll() {
-				return experienceService.findAll();
-			}
-			
-			@GetMapping("/experiences/{date}")
-			
-			public List<Experience> findByUpdateExp(@PathVariable("date") @DateTimeFormat(pattern= "yyyy-MM-dd")  Date date){
-				return experienceService.findByUpdateExp(date);
-			}
-			
-			//@RequestMapping(value = "experiences/{idExperience}", method = RequestMethod.GET)
-			/*@GetMapping("/experiences/{idExperience}")
-			public Experience findOne(@PathVariable("idExperience") Long id) {
-				return experienceService.findOne(id);
-			}*/
 
-			//@RequestMapping(value = "experiences", method = RequestMethod.POST)
-			@PostMapping("/experiences")
-			public Experience saveExperience(@RequestBody Experience experience) {
-				return experienceService.save(experience);
-			}
-			
-			/*@PostMapping("/experiences")
-			public String saveExperience(@RequestParam("urlTravelGuide") URL urlTravelGuide,@RequestParam("videoExp") URL videoExp, @RequestParam("description") String description,
-					@RequestParam("updateExp") Date updateExp,@RequestParam("imageNewsletter") MultipartFile imageExp) {
-				try {
-					Experience currentUser=new Experience();
-					currentUser.setUrlTravelGuide(urlTravelGuide);
-					currentUser.setUrlVideoExp(videoExp);
-					currentUser.setDescription(description);
-					currentUser.setUpdateExp(updateExp);
-					currentUser.setImageExp(imageExp.getBytes());
-					experienceService.save(currentUser);
-					return "Success";
-				}catch(Exception ex) {
-					ex.printStackTrace();
-					return "Error";
-				}
-			}*/
+	 @PostMapping("/experiences") 
+	 public Experience saveExperience(@RequestBody Experience experience) { 
+		 return experienceService.save(experience); 
+		 }
+	 
+	
+	/*@PostMapping("/experiences")
+	public String saveExperience(@RequestParam("urlTravelGuide") String urlTravelGuide,
+			@RequestParam("videoExp") String videoExp, @RequestParam("description") String description,
+			@RequestParam("updateExp") Date updateExp,
+			 @RequestParam("accountExperience") Account accountExperience,
+			@RequestParam("imageExp") MultipartFile imageExp) {
+		try {
+			Experience currentUser = new Experience();
+			currentUser.setUrlTravelGuide(urlTravelGuide);
+			currentUser.setUrlVideoExp(videoExp);
+			currentUser.setDescription(description);
+			currentUser.setUpdateExp(updateExp);
+			currentUser.setAccount(accountExperience);
 
-			//@RequestMapping(value = "experiences/{idExperience}", method = RequestMethod.DELETE)
-			@DeleteMapping("/experiences/{idExperience}")
-			public void deleteExperience(@PathVariable("idExperience") Long id) {
-				experienceService.delete(id);
-			}
+			currentUser.setImageExp(imageExp.getBytes());
+			experienceService.save(currentUser);
+			return "Success";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return "Error";
+		}
+	}*/
 
-			//@RequestMapping(value = "experiences/{idExperience}", method = RequestMethod.PUT)
-			@PutMapping("/experiences/{idExperience}")
-			public Experience updateExperience(@PathVariable("idExperience") Long id, @RequestBody Experience experience) {
-				Experience currentExperience = experienceService.findOne(id);
-				currentExperience.setUrlTravelGuide(experience.getUrlTravelGuide());
-				currentExperience.setUrlVideoExp(experience.getUrlVideoExp());
-				currentExperience.setDescription(experience.getDescription());
-				currentExperience.setUpdateExp(experience.getUpdateExp());
-				currentExperience.setStatusExp(experience.getStatusExp());
-				currentExperience.setImageExp(experience.getImageExp())	;		
-				return experienceService.save(currentExperience);
-			}
+	// @RequestMapping(value = "experiences/{idExperience}", method =
+	// RequestMethod.DELETE)
+	@DeleteMapping("/experiences/{idExperience}")
+	public void deleteExperience(@PathVariable("idExperience") Long id) {
+		experienceService.delete(id);
+	}
+
+	// @RequestMapping(value = "experiences/{idExperience}", method =
+	// RequestMethod.PUT)
+	@PutMapping("/experiences/{idExperience}")
+	public Experience updateExperience(@PathVariable("idExperience") Long id, @RequestBody Experience experience) {
+		Experience currentExperience = experienceService.findOne(id);
+		currentExperience.setUrlTravelGuide(experience.getUrlTravelGuide());
+		currentExperience.setUrlVideoExp(experience.getUrlVideoExp());
+		currentExperience.setDescription(experience.getDescription());
+		currentExperience.setUpdateExp(experience.getUpdateExp());
+		currentExperience.setStatusExp(experience.getStatusExp());
+		
+		return experienceService.save(currentExperience);
+	}
+
 
 }

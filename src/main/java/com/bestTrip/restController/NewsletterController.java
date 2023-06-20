@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bestTrip.entities.Newsletter;
+import com.bestTrip.services.impl.NewsletterService;
 import com.bestTrip.services.interfaces.INewsletterService;
 
 @RestController
@@ -33,13 +37,18 @@ public class NewsletterController {
 				return newsletterService.findAll();
 			}
 
-			//@RequestMapping(value = "newsletters/{idNewsletter}", method = RequestMethod.GET)
+			/*@RequestMapping(value = "newsletters/{idNewsletter}", method = RequestMethod.GET)
 			@GetMapping("/newsletters/{idNewsletter}")
 			public Newsletter findOne(@PathVariable("idNewsletter") Long id) {
 				return newsletterService.findOne(id);
-			}
-
-			//@RequestMapping(value = "newsletters", method = RequestMethod.POST)
+			}*/
+			
+			@GetMapping("/newsletters/{publicationDate}")
+			public List<Newsletter> findByPublicationDate(@PathVariable(name="publicationDate") @DateTimeFormat(pattern= "yyyy-MM-dd")  Date publicationDate) {
+			return newsletterService.findByPublicationDate(publicationDate);
+			}  
+			
+			
 			@PostMapping("/newsletters")
 			public Newsletter saveNewsletter(@RequestBody Newsletter newsletter) {
 				return newsletterService.save(newsletter);
