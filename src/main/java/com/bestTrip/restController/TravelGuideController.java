@@ -26,23 +26,16 @@ public class TravelGuideController {
 		return travelGuideService.findAll();
 	}
 
-	@GetMapping("/travelGuides/{idTravelGuide}")
+	/*@GetMapping("/travelGuides/{idTravelGuide}")
 	public TravelGuide findOne(@PathVariable("idTravelGuide") Long id) {
 		return travelGuideService.findOne(id);
-	}
+	}*/
 
-	@GetMapping("/travelGuides/{countryName}")
-	public List<TravelGuide> findByCountryName(@PathVariable("countryName") String countryName) {
-		return travelGuideService.findByCountryName(countryName);
-	}
-
-	@GetMapping("/travelGuides/{totalCost}")
-	public List<TravelGuide> findByTotalCost(@PathVariable("totalCost") float totalCost) {
-		return travelGuideService.findByTotalCost(totalCost);
-	}
-	@GetMapping("/travelGuides/{globalRating}")
-	public List<TravelGuide> findByglobalRating(@PathVariable("globalRating") float globalRating) {
-		return travelGuideService.findByGlobalRating(globalRating);
+	@GetMapping("/travelGuides/{countryName}/{totalCost}/{globalRating}")
+	public List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating(@PathVariable(name="countryName") String countryName, @PathVariable(name="totalCost") float totalCost,
+			@PathVariable(name="globalRating")float globalRating) {
+		return travelGuideService.findByCountryNameAndTotalCostAndGlobalRating(countryName, totalCost,globalRating);
+	
 	}
 
 	@PostMapping("/travelGuides")
