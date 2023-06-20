@@ -29,6 +29,7 @@ public class TravelGuideController {
 	/*@GetMapping("/travelGuides/{idTravelGuide}")
 	public TravelGuide findOne(@PathVariable("idTravelGuide") Long id) {
 		return travelGuideService.findOne(id);
+
 	}*/
 
 	@GetMapping("/travelGuides/{countryName}/{totalCost}/{globalRating}")
@@ -42,6 +43,8 @@ public class TravelGuideController {
 	public TravelGuide saveTravelGuide(@RequestBody TravelGuide travelGuide) {
 		return travelGuideService.save(travelGuide);
 	}
+	
+
 
 	@DeleteMapping("/travelGuides/{idTravelGuide}")
 	public void deleteTravelGuide(@PathVariable("idTravelGuide") Long id) {

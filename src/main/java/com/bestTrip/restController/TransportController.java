@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestTrip.entities.Restaurant;
 import com.bestTrip.entities.Transport;
 import com.bestTrip.services.interfaces.ITransportService;
 
@@ -30,9 +31,12 @@ public class TransportController {
 		}
 
 		//@RequestMapping(value = "transports/{idTransport}", method = RequestMethod.GET)
-		@GetMapping("/transports/{idTransport}")
-		public Transport findOne(@PathVariable("idTransport") Long idTransport) {
+		@GetMapping("/transports/{nameCompany}")
+		/*public Transport findOne(@PathVariable("idTransport") Long idTransport) {
 			return transportService.findOne(idTransport);
+		}*/
+		public List<Transport> findByNameCompany(@PathVariable("nameCompany") String nameCompany) {
+			return transportService.findByNameCompany(nameCompany);
 		}
 
 		//@RequestMapping(value = "transports", method = RequestMethod.POST)
@@ -56,6 +60,7 @@ public class TransportController {
 			currentTransport.setTransportCost(transport.getTransportCost());
 			currentTransport.setTransportRating(transport.getTransportRating());
 			currentTransport.setTimeTravel(transport.getTimeTravel());
+			currentTransport.setDescription(transport.getDescription());
 			return transportService.save(currentTransport);
 		}
 

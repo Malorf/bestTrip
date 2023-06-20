@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -28,11 +31,13 @@ public class Experience implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idExperience;
+
 	private String urlTravelGuide ;
 	/*@Lob
 	private byte[] imageExp;*/
 
-	private String urlVideoExp;
+
+	private URL urlVideoExp;
 	private String description;
 	
 	private enum StatusExp {waiting,approved,refused;}
@@ -52,9 +57,11 @@ public class Experience implements Serializable{
 	}
 
 
+
 	public Experience(String urlTravelGuide, String urlVideoExp, String description, StatusExp statusExp,
 			Date updateExp, Account accountExperience) {
 		
+
 		this.urlTravelGuide = urlTravelGuide;
 		this.urlVideoExp = urlVideoExp;
 		this.description = description;
@@ -73,22 +80,22 @@ public class Experience implements Serializable{
 		this.idExperience = idExperience;
 	}
 
-	public String getUrlTravelGuide() {
+	public URL getUrlTravelGuide() {
 		return urlTravelGuide;
 	}
 
-	public void setUrlTravelGuide(String urlTravelGuide) {
-		this.urlTravelGuide = urlTravelGuide;
+	public void setUrlTravelGuide(URL urlTravelGuide2) {
+		this.urlTravelGuide = urlTravelGuide2;
 	}
 
 	
 
-	public String getUrlVideoExp() {
+	public URL getUrlVideoExp() {
 		return urlVideoExp;
 	}
 
-	public void setUrlVideoExp(String urlVideoExp) {
-		this.urlVideoExp = urlVideoExp;
+	public void setUrlVideoExp(URL videoExp) {
+		this.urlVideoExp = videoExp;
 	}
 
 	public String getDescription() {

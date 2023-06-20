@@ -1,6 +1,7 @@
 package com.bestTrip.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue(value="MaritimeTransport")
-@Table(name = "MARITIME_TRANSPORT", schema = "best_Trip_db")
+@Table(name = "MARITIMETRANSPORTS", schema = "best_Trip_db")
 public class MaritimeTransport extends Transport implements Serializable {
 
 	
@@ -20,11 +21,15 @@ public class MaritimeTransport extends Transport implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+
 	public MaritimeTransport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
-			int boatClass) {
-		super(transportCost, nameCompany, transportRating, timeTravel);
+			String description, List<TravelGuide> transportsTravelGuides, int boatClass) {
+		super(transportCost, nameCompany, transportRating, timeTravel, description, transportsTravelGuides);
 		this.boatClass = boatClass;
 	}
+
 
 
 

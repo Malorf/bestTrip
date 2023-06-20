@@ -37,12 +37,13 @@ public class AirTranportService implements IAirTransportService{
 		
 	}
 
-
 	@Override
-	public AirTransport findByNameCompany(String nameCompany) {
+	public List<AirTransport> findByNameCompany(String nameCompany) {
 		// TODO Auto-generated method stub
 		return airTransportRepository.findByNameCompany(nameCompany);
 	}
+
+
 	
 	
 }

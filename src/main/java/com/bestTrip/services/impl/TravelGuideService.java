@@ -35,6 +35,8 @@ public class TravelGuideService implements ITravelGuideService {
 		
 	}
 
+
+
 	@Override
 	public List<TravelGuide> findByCountryNameAndTotalCostAndGlobalRating(String countryName, float totalCost, float globalRating) {
 		return travelGuideRepository.findByCountryNameAndTotalCostAndGlobalRating(countryName, totalCost, globalRating);
@@ -42,3 +44,4 @@ public class TravelGuideService implements ITravelGuideService {
 
 
 }
+

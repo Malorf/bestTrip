@@ -45,14 +45,14 @@ public class HotelController {
 		}
 
 		//@RequestMapping(value = "hotels/{idHotel}", method = RequestMethod.DELETE)
-		@DeleteMapping("/hotels/{idHotel}")
-		public void deleteHotel(@PathVariable("idHotel") Long id) {
+		@DeleteMapping("/hotels/{idPlace}")
+		public void deleteHotel(@PathVariable("idPlace") Long id) {
 			hotelService.delete(id);
 		}
 
 		//@RequestMapping(value = "hotels/{idHotel}", method = RequestMethod.PUT)
-		@PutMapping("/hotels/{idHotel}")
-		public Hotel updateHotel(@PathVariable("idHotel") Long id, @RequestBody Hotel hotel) {
+		@PutMapping("/hotels/{idPlace}")
+		public Hotel updateHotel(@PathVariable("idPlace") Long id, @RequestBody Hotel hotel) {
 			Hotel currentHotel = hotelService.findOne(id);
 			currentHotel.setAdress(hotel.getAdress());
 			currentHotel.setIdPlace(hotel.getIdPlace());
@@ -60,6 +60,7 @@ public class HotelController {
 			currentHotel.setPlaceName(hotel.getPlaceName());
 			currentHotel.setPlaceRating(hotel.getPlaceRating());
 			currentHotel.setStars(hotel.getStars());
+			currentHotel.setDesciption(hotel.getDesciption());
 		
 			return hotelService.save(currentHotel);
 		}

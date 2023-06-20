@@ -6,6 +6,7 @@ import java.util.List;
 import com.bestTrip.entities.MaritimeTransport;
 import com.bestTrip.entities.Transport;
 
+
 public interface IMaritimeTransportService {
 	
 	List<MaritimeTransport> findAll();
@@ -15,5 +16,7 @@ public interface IMaritimeTransportService {
 	MaritimeTransport save(MaritimeTransport maritimeTransport);
 
 	void delete(Long id);
+	
+	List<MaritimeTransport> findByNameCompany(String nameCompany);
 	
 }

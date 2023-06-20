@@ -13,6 +13,6 @@ public interface IAirTransportService {
 
 	void delete(Long id);
 	
-	AirTransport findByNameCompany(String nameCompany);
+	List<AirTransport> findByNameCompany(String nameCompany);
 	
 }

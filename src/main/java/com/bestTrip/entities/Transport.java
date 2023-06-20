@@ -29,6 +29,7 @@ public class Transport implements Serializable{
 	private String nameCompany;
 	private Float transportRating;
 	private Float timeTravel;
+	private String description;
 	
 	
 	@ManyToMany(mappedBy="transports")
@@ -38,16 +39,24 @@ public class Transport implements Serializable{
 	public Transport() {
 		// TODO Auto-generated constructor stub
 	}
-	public Transport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel) {
+
+	
+	
+	
+	public Transport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
+			String description, List<TravelGuide> transportsTravelGuides) {
 		super();
 		this.transportCost = transportCost;
 		this.nameCompany = nameCompany;
 		this.transportRating = transportRating;
 		this.timeTravel = timeTravel;
+		this.description = description;
+		this.transportsTravelGuides = transportsTravelGuides;
 	}
-	
-	
-	
+
+
+
+
 	public Transport(Float transportCost, String nameCompany, Float transportRating, Float timeTravel,
 			List<TravelGuide> transportsTravelGuides) {
 		super();
@@ -90,6 +99,20 @@ public class Transport implements Serializable{
 	
 	
 
+	public String getDescription() {
+		return description;
+	}
+
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+
 	public List<String> getTravelGuides() {
 		List<String> travelGuidesNames = new ArrayList<>();
 		for(TravelGuide travelGuide :transportsTravelGuides){
@@ -102,12 +125,40 @@ public class Transport implements Serializable{
 	public void setTransportsTravelGuides(List<TravelGuide> transportsTravelGuides) {
 		this.transportsTravelGuides = transportsTravelGuides;
 	}
+	
+	
+	public String getDescrption() {
+		return description;
+	}
+
+
+
+
+	public void setDescrption(String description) {
+		this.description = description;
+	}
+
+
+
+
+	public List<TravelGuide> getTransportsTravelGuides() {
+		return transportsTravelGuides;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Transport [idTransport=" + idTransport + ", transportCost=" + transportCost + ", nameCompany="
-				+ nameCompany + ", transportRating=" + transportRating + ", timeTravel=" + timeTravel
-				+ ", transportsTravelGuides=" + transportsTravelGuides + "]";
+				+ nameCompany + ", transportRating=" + transportRating + ", timeTravel=" + timeTravel + ", description="
+				+ description + ", transportsTravelGuides=" + transportsTravelGuides + "]";
 	}
+
+
+
+
+
 
 	
 	

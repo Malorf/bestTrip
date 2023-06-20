@@ -5,6 +5,7 @@ import java.util.List;
 import com.bestTrip.entities.Activity;
 import com.bestTrip.entities.Hotel;
 
+
 public interface IActivityService {
 
 	List<Activity> findAll();
